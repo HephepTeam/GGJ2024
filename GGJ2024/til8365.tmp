@@ -1,13 +1,13 @@
 [gd_scene load_steps=10 format=3 uid="uid://dpl71m8w4ufjv"]
 
 [ext_resource type="PackedScene" uid="uid://c6bacbbwa0gmr" path="res://scenes/chunks/ChunkTemplate.tscn" id="1_uo2s1"]
-[ext_resource type="Texture2D" uid="uid://d6cey7yjcltj" path="res://assets/graphics/terrains/sol.png" id="2_k6qpj"]
+[ext_resource type="Texture2D" uid="uid://75mrwu0t1s4x" path="res://assets/graphics/terrains/icon.png" id="2_fj88k"]
 [ext_resource type="Texture2D" uid="uid://dh650u7frkmbu" path="res://assets/graphics/terrains/wall.png" id="3_vnb4e"]
 [ext_resource type="Texture2D" uid="uid://qy0si4a65xdl" path="res://assets/graphics/terrains/hole.png" id="4_n1crr"]
 [ext_resource type="PackedScene" uid="uid://ok1sa3u2d6lv" path="res://scenes/player/player_rigid.tscn" id="5_xnitx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lp373"]
-texture = ExtResource("2_k6qpj")
+texture = ExtResource("2_fj88k")
 texture_region_size = Vector2i(256, 256)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
@@ -46,11 +46,4 @@ position = Vector2(1024, 576)
 zoom = Vector2(0.5, 0.5)
 
 [node name="PlayerRigid" parent="." instance=ExtResource("5_xnitx")]
-position = Vector2(992, 1536)
-lock_rotation = true
-
-[node name="PlayerRigid2" parent="." instance=ExtResource("5_xnitx")]
-modulate = Color(0.513726, 0.654902, 1, 1)
-position = Vector2(1248, 1536)
-lock_rotation = true
-gamepad = 1
+position = Vector2(1120, 1536)

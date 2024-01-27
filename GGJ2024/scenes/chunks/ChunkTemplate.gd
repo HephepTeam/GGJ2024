@@ -10,6 +10,8 @@ func _ready():
 	for child in children:
 		if child is Marker2D:
 			exits.append(child)
+			
+	place_traps()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -21,7 +23,7 @@ func place_traps():
 	var cells = get_used_cells_by_id(0,2)
 	for cell_coord in cells:
 		var coord = map_to_local(cell_coord)
-		var hole = hole_scene.instanciate()
-		hole.position = coord
+		var hole = hole_scene.instantiate()
+		hole.position = coord+Vector2(-128, -128)
 		add_child(hole)
 	# sort a random number of traps  
