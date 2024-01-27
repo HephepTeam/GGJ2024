@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/chunks/traps/hole.gd" id="1_jslxa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1mpf2"]
-size = Vector2(128, 128)
+size = Vector2(192, 192)
 
 [node name="Hole" type="Area2D" groups=["hole"]]
 script = ExtResource("1_jslxa")

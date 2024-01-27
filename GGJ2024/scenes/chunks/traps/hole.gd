@@ -14,4 +14,5 @@ func _process(delta):
 func _on_body_entered(body):
 	print("prout")
 	if body.is_in_group("player"):
+		body.move_to(global_position+Vector2(128,128))
 		body.go_fall()

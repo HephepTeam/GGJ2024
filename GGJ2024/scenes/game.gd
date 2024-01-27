@@ -20,7 +20,7 @@ func _ready():
 	#listage des chunks
 	pieces_scenes_path = Array(dir.get_files())
 	#selection des chunks
-	for i in range(4):
+	for i in range(level_length):
 		pieces_scenes_path.shuffle()
 		selected_pieces.append(pieces_scenes_path.front())
 		

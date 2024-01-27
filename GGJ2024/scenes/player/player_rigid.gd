@@ -19,6 +19,8 @@ var step_active = false
 var state = null
 var checkpoint_pos = Vector2(0,0)
 
+var last_dash_force = Vector2.ZERO
+
 var is_in_fall = false
 var dead = false
 var dashing = false
@@ -45,13 +47,15 @@ func _physics_process(delta):
 		states.IDLE:
 			animated_sprite.play("idle")
 			var direction = get_joystick_inputs()
+			rotate_sprite(direction)
 			if get_dash_input():
 				dash(direction)
 			if abs(direction.length()) > 1.0:
 				direction = direction.normalized()
 				state = states.MOVE
 		states.MOVE:
-			animated_sprite.play("run")
+			if animated_sprite.animation != "run":
+				animated_sprite.play("run")
 			var direction = get_joystick_inputs()
 			# Using the follow steering behavior.
 			var target_force = direction * force
@@ -75,8 +79,9 @@ func _physics_process(delta):
 				state = states.DEAD
 				print("dead")
 		states.DASH:
-			await get_tree().create_timer(0.3).timeout
-			state = states.IDLE
+			rotate_sprite(last_dash_force)
+			await get_tree().create_timer(0.15).timeout
+			state = states.MOVE
 		states.DEAD:
 			if !dead:
 				dead = true
@@ -109,7 +114,8 @@ func dash(direction: Vector2):
 	if direction.length() < 0.3:
 		print("no direction")
 		direction = Vector2(1,0).rotated(animated_sprite.global_rotation)
-	apply_central_impulse(direction*dash_force)
+	last_dash_force = direction*dash_force 
+	apply_central_impulse(last_dash_force)
 	state = states.DASH
 	
 func update_checkpoint(pos: Vector2):
@@ -122,15 +128,24 @@ func reset_to_checkpoint():
 	$AnimatedSprite2D.scale = Vector2.ONE
 	$AnimatedSprite2D.rotation = -PI/2
 	self.global_transform.origin = checkpoint_pos
-	#position = checkpoint_pos
 	state = states.IDLE
 	dead = false
+	
+func move_to(pos : Vector2):
+	self.global_transform.origin = pos
 
 func _on_timer_particle_timeout():
 	step_active = false
 
-func _on_body_area_entered(area):
-	if state == states.DASH:
-		var direction = get_joystick_inputs()
-		var target_force = direction * force
-		area.get_parent().apply_central_impulse(-target_force)
+
+func add_force(force: Vector2):
+	if state in [states.IDLE,states.MOVE,states.DASH ]:
+		apply_central_impulse(force)
+
+
+func _on_hurtbox_body_entered(body):
+	if body.is_in_group("player"):
+		if body.state == states.DASH:
+			add_force(body.last_dash_force.normalized()*dash_force)
+			
+		
