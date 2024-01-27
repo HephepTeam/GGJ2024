@@ -14,6 +14,7 @@ var is_in_fall = false
 var dashing = false
 
 func _ready():
+	Globals.players.append(self)
 	state = states.IDLE
 
 func get_joystick_inputs():
@@ -21,7 +22,6 @@ func get_joystick_inputs():
 		Input.get_joy_axis(gamepad,JOY_AXIS_LEFT_X),
 		Input.get_joy_axis(gamepad,JOY_AXIS_LEFT_Y)
 	)
-	print(direction)
 	return direction
 
 func get_dash_input():
@@ -42,7 +42,6 @@ func _physics_process(delta):
 				direction = direction.normalized()
 				state = states.MOVE
 		states.MOVE:
-			print("entering move")
 			animated_sprite.play("run")
 			var direction = get_joystick_inputs()
 			# Using the follow steering behavior.
@@ -54,7 +53,6 @@ func _physics_process(delta):
 			if abs(direction.length()) < 0.3:
 				state = states.IDLE
 		states.FALL:
-			print("entering fall")
 			if !is_in_fall:
 				is_in_fall = true
 				freeze = true
@@ -71,13 +69,13 @@ func _physics_process(delta):
 
 
 func go_fall():
-	state = states.FALL
+	if state != states.DASH:
+		state = states.FALL
 	
 func dash(direction: Vector2):
 	print("dash")
 	if direction.length() < 0.3:
 		print("no direction")
 		direction = Vector2(1,0).rotated(animated_sprite.global_rotation)
-	print(direction*dash_force)
 	apply_central_impulse(direction*dash_force)
 	state = states.DASH
