@@ -27,3 +27,8 @@ func place_traps():
 		hole.position = coord+Vector2(-128, -128)
 		add_child(hole)
 	# sort a random number of traps  
+
+
+func _on_checkpoint_body_entered(body):
+	if body.is_in_group("player"):
+		body.update_checkpoint($checkpoint.global_position)

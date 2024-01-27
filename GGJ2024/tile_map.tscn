@@ -4,9 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://d6cey7yjcltj" path="res://assets/graphics/terrains/sol.png" id="2_k6qpj"]
 [ext_resource type="Texture2D" uid="uid://dh650u7frkmbu" path="res://assets/graphics/terrains/wall.png" id="3_vnb4e"]
 [ext_resource type="Texture2D" uid="uid://qy0si4a65xdl" path="res://assets/graphics/terrains/hole.png" id="4_n1crr"]
-[ext_resource type="PackedScene" uid="uid://b2c5pnny18woh" path="res://scenes/chunks/chunk1.tscn" id="5_8y64p"]
+[ext_resource type="PackedScene" uid="uid://b2c5pnny18woh" path="res://scenes/chunks/chunks_pieces/chunk1.tscn" id="5_8y64p"]
 [ext_resource type="PackedScene" uid="uid://ok1sa3u2d6lv" path="res://scenes/player/player_rigid.tscn" id="5_xnitx"]
-[ext_resource type="PackedScene" uid="uid://6qw7ixtj05bs" path="res://scenes/chunks/chunk0.tscn" id="6_e0vsk"]
+[ext_resource type="PackedScene" uid="uid://6qw7ixtj05bs" path="res://scenes/chunks/chunks_pieces/chunk0.tscn" id="6_e0vsk"]
 [ext_resource type="PackedScene" uid="uid://dq3w0nuu7bitg" path="res://scenes/Common/customcam.tscn" id="7_j7xuf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lp373"]
@@ -59,10 +59,8 @@ max_zoom = 3.0
 
 [node name="PlayerRigid" parent="." instance=ExtResource("5_xnitx")]
 position = Vector2(1024, -160)
-lock_rotation = true
 
 [node name="PlayerRigid2" parent="." instance=ExtResource("5_xnitx")]
 modulate = Color(0.513726, 0.654902, 1, 1)
 position = Vector2(1280, -160)
-lock_rotation = true
 gamepad = 1

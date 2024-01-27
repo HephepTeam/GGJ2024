@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://c6bacbbwa0gmr"]
+[gd_scene load_steps=4 format=3 uid="uid://c6bacbbwa0gmr"]
 
 [ext_resource type="TileSet" uid="uid://ct6w4x6gdsygx" path="res://scenes/tileset.tres" id="1_iv6l7"]
 [ext_resource type="Script" path="res://scenes/chunks/ChunkTemplate.gd" id="3_bd4jh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p20ic"]
+size = Vector2(768, 152)
 
 [node name="Chunk_template" type="TileMap"]
 position = Vector2(-128, 0)
@@ -15,3 +18,12 @@ position = Vector2(-256, -2304)
 
 [node name="Exit2" type="Marker2D" parent="."]
 position = Vector2(512, -2304)
+
+[node name="checkpoint" type="Area2D" parent="."]
+position = Vector2(128, -128)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="checkpoint"]
+position = Vector2(8, 48)
+shape = SubResource("RectangleShape2D_p20ic")
+
+[connection signal="body_entered" from="checkpoint" to="." method="_on_checkpoint_body_entered"]

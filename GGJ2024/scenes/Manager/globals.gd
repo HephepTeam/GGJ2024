@@ -4,6 +4,8 @@ extends Node
 var players = []
 var cam = null
 
+var colors = [Color.AQUA, Color.BLUE_VIOLET, Color.CORNSILK, Color.CORAL]
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
