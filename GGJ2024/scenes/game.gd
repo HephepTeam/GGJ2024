@@ -34,6 +34,7 @@ func _ready():
 		
 	var inst_end = load("res://scenes/chunks/end_chunk.tscn").instantiate()
 	inst_end.position = pos
+	inst_end.run_ended.connect(_on_run_ended)
 	add_child(inst_end)
 		
 	#instanciate players
@@ -44,10 +45,14 @@ func _ready():
 		inst.position = start_pos[pl].position 
 		colors.shuffle()
 		inst.modulate = colors.pop_front()
+		inst.rotation_degrees = -90
 		add_child(inst)
 		
 	#start du compte à rebours
 	$Music.play()
+
+func _on_run_ended(nb):
+	$CanvasLayer/Winner.go(nb)
 
 func new_game():
 	get_tree().reload_current_scene()	

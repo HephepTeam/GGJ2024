@@ -1,5 +1,7 @@
 extends TileMap
 
+signal run_ended(nb)
+
 const bumper_scene = preload("res://scenes/chunks/traps/bumper.tscn")
 const hole_scene = preload("res://scenes/chunks/traps/hole.tscn")
 const trap_offset = Vector2(128,128)
@@ -21,16 +23,17 @@ func _process(delta):
 	
 func place_traps():
 	#parse tilemap to place hole
-	var cells = get_used_cells_by_id(0,2)
+	var cells = get_used_cells_by_id(1,2)
 	for cell_coord in cells:
+		erase_cell(1,cell_coord)
 		var coord = map_to_local(cell_coord)
 		var bumper = bumper_scene.instantiate()
 		bumper.position = coord
 		add_child(bumper)
 		
-	cells = get_used_cells_by_id(0,1)
+	cells = get_used_cells_by_id(1,1)
 	for cell_coord in cells:
-		erase_cell(0,cell_coord)
+		erase_cell(1,cell_coord)
 		var coord = map_to_local(cell_coord)
 		var hole = hole_scene.instantiate()
 		hole.position = coord+Vector2(-128, -128)
@@ -44,3 +47,5 @@ func _on_checkpoint_body_entered(body):
 func _on_finish_line_body_entered(body):
 	if body.is_in_group("player"):
 		print(body.gamepad)
+		Globals.can_move = false
+		run_ended.emit(body.gamepad)

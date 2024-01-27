@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://cp17ej52nmfmd"]
+
+[ext_resource type="Script" path="res://scenes/MenuItem/Winner.gd" id="1_0cldt"]
+[ext_resource type="Texture2D" uid="uid://cim0era1x70gj" path="res://assets/graphics/menu/count/winner.png" id="2_lnfkq"]
+
+[node name="Winner" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1920.0
+offset_bottom = -1080.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(192, 64)
+script = ExtResource("1_0cldt")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_right = 697.0
+offset_bottom = 398.0
+pivot_offset = Vector2(352, 192)
+texture = ExtResource("2_lnfkq")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 416.0
+offset_right = 452.0
+offset_bottom = 485.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 50
+text = "Player X"
+horizontal_alignment = 1

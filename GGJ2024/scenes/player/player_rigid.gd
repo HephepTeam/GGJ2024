@@ -36,14 +36,19 @@ func _ready():
 	state = states.IDLE
 
 func get_joystick_inputs():
-	var direction = Vector2(
-		Input.get_joy_axis(gamepad,JOY_AXIS_LEFT_X),
-		Input.get_joy_axis(gamepad,JOY_AXIS_LEFT_Y)
-	)
+	var direction
+	if Globals.can_move:
+		direction = Vector2(
+			Input.get_joy_axis(gamepad,JOY_AXIS_LEFT_X),
+			Input.get_joy_axis(gamepad,JOY_AXIS_LEFT_Y)
+		)
+	else:
+		direction = Vector2.ZERO
 	return direction
 
 func get_dash_input():
-	return Input.is_action_just_pressed("dash"+str(gamepad))
+	if Globals.can_move:
+		return Input.is_action_just_pressed("dash"+str(gamepad))
 	
 func rotate_sprite(direction: Vector2):
 	animated_sprite.global_rotation = lerp(animated_sprite.global_rotation,direction.angle(),0.5)

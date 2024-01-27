@@ -1,0 +1,15 @@
+[gd_scene load_steps=6 format=3 uid="uid://cnsppthpaihtt"]
+
+[ext_resource type="Script" path="res://Number.gd" id="1_p4pog"]
+[ext_resource type="Texture2D" uid="uid://jstaa6ogkqcm" path="res://assets/graphics/menu/count/go.png" id="2_vg2i4"]
+[ext_resource type="Texture2D" uid="uid://b2vhdbfwce7c1" path="res://assets/graphics/menu/count/1.png" id="3_8vx18"]
+[ext_resource type="Texture2D" uid="uid://dxnjkksf026yd" path="res://assets/graphics/menu/count/2.png" id="4_fccy1"]
+[ext_resource type="Texture2D" uid="uid://de4j4mxjjq7jq" path="res://assets/graphics/menu/count/3.png" id="5_twtum"]
+
+[node name="Number" type="Node2D"]
+script = ExtResource("1_p4pog")
+textu = Array[Texture]([ExtResource("2_vg2i4"), ExtResource("3_8vx18"), ExtResource("4_fccy1"), ExtResource("5_twtum")])
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.01, 0.01)
+texture = ExtResource("3_8vx18")

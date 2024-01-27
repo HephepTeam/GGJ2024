@@ -4,6 +4,7 @@ extends Node
 var players = []
 var cam = null
 var game = null
+var can_move = false
 
 var colors = [Color.AQUA, Color.BLUE_VIOLET, Color.CORNSILK, Color.CORAL]
 
