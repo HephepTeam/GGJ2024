@@ -2,11 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://ok1sa3u2d6lv" path="res://scenes/player/player_rigid.tscn" id="1_6btge"]
 
-[node name="Node2D" type="Node2D"]
+[node name="Test" type="Node2D"]
 
 [node name="PlayerRigid" parent="." instance=ExtResource("1_6btge")]
+position = Vector2(297, 216)
 
 [node name="PlayerRigid2" parent="." instance=ExtResource("1_6btge")]
-position = Vector2(533, 45)
+position = Vector2(1660, 252)
 angular_damp_mode = 1
 gamepad = 1

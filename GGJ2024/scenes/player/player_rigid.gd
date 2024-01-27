@@ -117,3 +117,9 @@ func reset_to_checkpoint():
 
 func _on_timer_particle_timeout():
 	step_active = false
+
+func _on_body_area_entered(area):
+	if state == states.DASH:
+		var direction = get_joystick_inputs()
+		var target_force = direction * force
+		area.get_parent().apply_central_impulse(-target_force)
