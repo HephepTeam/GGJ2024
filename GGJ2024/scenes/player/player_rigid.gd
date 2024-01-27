@@ -6,15 +6,20 @@ const force = 100
 const dash_force = 2000
 
 @export var gamepad = 0
-
-#integration de l'effet foot step
 @export var footstep_scene: PackedScene = null
+@export var nb_dash = 5
+
 @onready var timer_particle = $TimerParticle
-var step_active = false
+@onready var timer_dash = $TimerDash
 
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var footstep_pos = $AnimatedSprite2D/FootStepPosition
 @onready var shadow = $Shadow
+
+var step_active = false
+
+var dash_count = 0
+var dash_active = true
 
 var state = null
 var checkpoint_pos = Vector2(0,0)
@@ -26,6 +31,7 @@ var dead = false
 var dashing = false
 
 func _ready():
+	dash_count = 0
 	Globals.add_cam_target(self)
 	state = states.IDLE
 
@@ -50,6 +56,7 @@ func _physics_process(delta):
 			rotate_sprite(direction)
 			if get_dash_input():
 				dash(direction)
+				change_player_scale()
 			if abs(direction.length()) > 1.0:
 				direction = direction.normalized()
 				state = states.MOVE
@@ -63,8 +70,9 @@ func _physics_process(delta):
 			rotate_sprite(direction)
 			handle_player_particles()
 			if get_dash_input():
-				dash(direction)
-				change_player_scale()
+				if dash_active==true:
+					dash(direction)
+					change_player_scale()
 			if abs(direction.length()) < 0.3:
 				state = states.IDLE
 		states.FALL:
@@ -77,7 +85,6 @@ func _physics_process(delta):
 				tween.parallel().tween_property($AnimatedSprite2D, "rotation", 2*PI, 1.0).set_trans(Tween.TRANS_SINE)
 				await tween.finished
 				state = states.DEAD
-				print("dead")
 		states.DASH:
 			rotate_sprite(last_dash_force)
 			await get_tree().create_timer(0.15).timeout
@@ -112,19 +119,23 @@ func go_fall(pos):
 		state = states.FALL
 	
 func dash(direction: Vector2):
-	print("dash")
-	if direction.length() < 0.3:
-		print("no direction")
-		direction = Vector2(1,0).rotated(animated_sprite.global_rotation)
-	last_dash_force = direction*dash_force 
-	apply_central_impulse(last_dash_force)
-	state = states.DASH
+	if dash_count<5:
+		if timer_dash.time_left==0:
+			timer_dash.start()
+		dash_count += 1
+		if direction.length() < 0.3:
+			direction = Vector2(1,0).rotated(animated_sprite.global_rotation)
+		last_dash_force = direction*dash_force 
+		apply_central_impulse(last_dash_force)
+		state = states.DASH
+	else:
+		dash_active=false
+		timer_dash.start()
 	
 func update_checkpoint(pos: Vector2):
 	checkpoint_pos = pos
 
 func reset_to_checkpoint():
-	print("Reset")
 	is_in_fall = false
 	freeze = false
 	shadow.visible = true
@@ -140,15 +151,16 @@ func move_to(pos : Vector2):
 func _on_timer_particle_timeout():
 	step_active = false
 
-
 func add_force(force: Vector2):
 	if state in [states.IDLE,states.MOVE,states.DASH ]:
 		apply_central_impulse(force)
-
 
 func _on_hurtbox_body_entered(body):
 	if body.is_in_group("player"):
 		if body.state == states.DASH:
 			add_force(body.last_dash_force.normalized()*dash_force)
 			
-		
+func _on_timer_dash_timeout():
+	dash_count = 0
+	if dash_active==false:
+		dash_active = true
