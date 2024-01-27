@@ -9,15 +9,15 @@ const dash_force = 2000
 
 #integration de l'effet foot step
 @export var footstep_scene: PackedScene = null
-var last_step = 0
+@onready var timer_particle = $TimerParticle
+var step_active = false
 
 @onready var animated_sprite = $AnimatedSprite2D
+@onready var footstep_pos = $AnimatedSprite2D/FootStepPosition
 
 var state = null
-var checkpoint_pos = Vector2(0,0)
 
 var is_in_fall = false
-var dead = false
 var dashing = false
 
 func _ready():
@@ -61,29 +61,26 @@ func _physics_process(delta):
 				state = states.IDLE
 		states.FALL:
 			if !is_in_fall:
-				print("falling")
 				is_in_fall = true
 				freeze = true
 				animated_sprite.play("fall"+str(randi_range(0,1)))
 				var tween = get_tree().create_tween()
 				tween.tween_property($AnimatedSprite2D, "scale", Vector2(0,0), 1.0).set_trans(Tween.TRANS_SINE)
 				tween.parallel().tween_property($AnimatedSprite2D, "rotation", 2*PI, 1.0).set_trans(Tween.TRANS_SINE)
-				await tween.finished
-				state = states.DEAD
-				print("dead")
+			
 		states.DASH:
 			await get_tree().create_timer(0.3).timeout
 			state = states.IDLE
 		states.DEAD:
-			if !dead:
-				dead = true
-				await get_tree().create_timer(0.5).timeout
-				reset_to_checkpoint()
+			print("DEAD")
 
 func handle_player_particles():
-	var footstep_instance = footstep_scene.instantiate()
-	footstep_instance.global_position = Vector2(global_position.x-50,global_position.y-50)
-	get_parent().add_child(footstep_instance)
+	if step_active==false:
+		step_active=true
+		timer_particle.start()
+		var footstep_instance = footstep_scene.instantiate()
+		footstep_instance.global_position = Vector2(footstep_pos.global_position)
+		get_parent().add_child(footstep_instance)
 
 func go_fall():
 	if state != states.DASH:
@@ -97,16 +94,6 @@ func dash(direction: Vector2):
 	apply_central_impulse(direction*dash_force)
 	state = states.DASH
 
-func update_checkpoint(pos: Vector2):
-	checkpoint_pos = pos
-	
-func reset_to_checkpoint():
-	print("Reset")
-	is_in_fall = false
-	freeze = false
-	$AnimatedSprite2D.scale = Vector2.ONE
-	$AnimatedSprite2D.rotation = -PI/2
-	self.global_transform.origin = checkpoint_pos
-	#position = checkpoint_pos
-	state = states.IDLE
-	dead = false
+
+func _on_timer_particle_timeout():
+	step_active = false

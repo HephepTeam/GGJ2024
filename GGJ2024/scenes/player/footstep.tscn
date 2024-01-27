@@ -3,24 +3,25 @@
 [ext_resource type="Script" path="res://scenes/player/footstep.gd" id="1_1ijjy"]
 
 [sub_resource type="Curve" id="Curve_17cl0"]
-_data = [Vector2(0, 0.532076), 0.0, 0.0, 0, 0, Vector2(0.996324, 1), 0.0, 0.0, 0, 0]
+resource_local_to_scene = true
+_data = [Vector2(0.00367647, 1), 0.0, 1.69057, 0, 0, Vector2(1, 0.018868), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="Gradient" id="Gradient_jtecb"]
+[sub_resource type="Gradient" id="Gradient_oj152"]
+offsets = PackedFloat32Array(0, 0.512821, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
 
 [node name="footstep" type="CPUParticles2D"]
-emitting = false
-one_shot = true
-emission_shape = 1
-emission_sphere_radius = 45.0
-direction = Vector2(1, 1)
-spread = 90.0
+amount = 40
+lifetime = 0.3
+explosiveness = 1.0
+local_coords = true
+spread = 180.0
 gravity = Vector2(0, 0)
-initial_velocity_min = 50.0
-initial_velocity_max = 50.0
+initial_velocity_min = 100.0
+initial_velocity_max = 200.0
 scale_amount_min = 10.0
 scale_amount_max = 10.0
 scale_amount_curve = SubResource("Curve_17cl0")
-color = Color(0.509804, 0.509804, 0.509804, 1)
-color_ramp = SubResource("Gradient_jtecb")
+color_ramp = SubResource("Gradient_oj152")
 script = ExtResource("1_1ijjy")
