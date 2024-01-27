@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://bca88l25e55od"]
+
+[ext_resource type="Texture2D" uid="uid://ci8p7kn22hnad" path="res://assets/graphics/line.png" id="1_k7hgh"]
+
+[sub_resource type="Curve" id="Curve_1x7xx"]
+_data = [Vector2(0, 0.0339622), 0.0, 0.0, 0, 0, Vector2(0.202206, 1), 0.0, 0.0, 0, 0, Vector2(0.297794, 1), 0.0, 0.0, 0, 0, Vector2(0.988971, 0.0490566), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[node name="BounceParticles" type="CPUParticles2D"]
+emitting = false
+amount = 11
+lifetime = 0.55
+one_shot = true
+speed_scale = 2.0
+explosiveness = 0.74
+lifetime_randomness = 0.22
+texture = ExtResource("1_k7hgh")
+particle_flag_align_y = true
+spread = 60.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 368.42
+initial_velocity_max = 484.21
+damping_min = 94.74
+damping_max = 94.74
+scale_amount_min = 0.2
+scale_amount_max = 0.4
+scale_amount_curve = SubResource("Curve_1x7xx")
+color = Color(0, 0, 0, 1)
