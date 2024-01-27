@@ -1,51 +1,46 @@
 extends Camera2D
 
-@export var move_speed = 0.5
-@export var zoom_speed = 0.5
-@export var min_zoom = 	1.5
-@export var max_zoom = 5
-@export var margin = Vector2(400, 200)
-
-
-@onready var screen_size = DisplayServer.window_get_size()
+@export var move_speed = 30 # camera position lerp speed
+@export var zoom_speed = 3.0  # camera zoom lerp speed
+@export var min_zoom = 5.0  # camera won't zoom closer than this
+@export var max_zoom = 0.5  # camera won't zoom farther than this
+@export var margin = Vector2(400, 200)  # include some buffer area around targets
 
 var targets = []
 
-func add_targets(t):
-	if not t in targets:
-		targets.append(t)
-		
-func remove_targets(t):
-	if t in targets:
-		targets.remove(t)
+@onready var screen_size = get_viewport_rect().size
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	targets = Globals.players
-	
+	Globals.cam = self
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if !targets:
 		return
+
+	# Keep the camera centered among all targets
 	var p = Vector2.ZERO
 	for target in targets:
 		p += target.position
-		p /= targets.size()
-	
-	position.y = lerp(position.y, p.y, move_speed)
-	
-	var r = Rect2(p, Vector2.ONE)
+	p /= targets.size()
+	position = lerp(position, p, move_speed * delta)
+
+	# Find the zoom that will contain all targets
+	var r = Rect2(position, Vector2.ONE)
 	for target in targets:
 		r = r.expand(target.position)
 	r = r.grow_individual(margin.x, margin.y, margin.x, margin.y)
-	var d = max(r.size.x, r.size.y)
 	var z
 	if r.size.x > r.size.y * screen_size.aspect():
-		z = clamp((r.size.x / screen_size.x) , min_zoom, max_zoom)
+		z = 1 / clamp(r.size.x / screen_size.x, max_zoom, min_zoom)
 	else:
-		z = clamp((r.size.y / screen_size.y)  , min_zoom, max_zoom)
-		print(z)
-	zoom = lerp(zoom, Vector2.ONE * z, zoom_speed)
-	
+		z = 1 / clamp(r.size.y / screen_size.y, max_zoom, min_zoom)
+	zoom = lerp(zoom, Vector2.ONE * z, zoom_speed * delta)
+
+
+func add_target(t):
+	if not t in targets:
+		targets.append(t)
+
+func remove_target(t):
+	if t in targets:
+		targets.remove(t)

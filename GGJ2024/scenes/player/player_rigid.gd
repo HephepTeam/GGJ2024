@@ -14,7 +14,7 @@ var is_in_fall = false
 var dashing = false
 
 func _ready():
-	Globals.players.append(self)
+	Globals.add_cam_target(self)
 	state = states.IDLE
 
 func get_joystick_inputs():
