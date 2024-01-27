@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://ck0wredvc6blg"]
+
+[ext_resource type="Script" path="res://scenes/MenuItem/player_notif.gd" id="1_fha2k"]
+[ext_resource type="Texture2D" uid="uid://bbglitvc7qque" path="res://assets/graphics/menu/gamepad.png" id="1_stvia"]
+
+[node name="PlayerNotif" type="Node2D"]
+script = ExtResource("1_fha2k")
+
+[node name="gamepad" type="Sprite2D" parent="."]
+scale = Vector2(0.01, 0.01)
+texture = ExtResource("1_stvia")
+
+[node name="Label" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_left = -88.0
+offset_top = 128.0
+offset_right = 106.0
+offset_bottom = 197.0
+theme_override_font_sizes/font_size = 50
+text = "Player 1"

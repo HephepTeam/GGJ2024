@@ -41,6 +41,8 @@ func _ready():
 		inst.modulate = colors.pop_front()
 		add_child(inst)
 		
+	#start du compte à rebours
+		
 		
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

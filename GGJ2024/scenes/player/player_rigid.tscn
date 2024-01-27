@@ -1,9 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://ok1sa3u2d6lv"]
+[gd_scene load_steps=10 format=3 uid="uid://ok1sa3u2d6lv"]
 
 [ext_resource type="Script" path="res://scenes/player/player_rigid.gd" id="1_bau7k"]
 [ext_resource type="Texture2D" uid="uid://dvoktc0vi7ryc" path="res://assets/graphics/player_1.png" id="2_4tvpp"]
-[ext_resource type="PackedScene" uid="uid://da3iircjmaxe1" path="res://scenes/player/footstep.tscn" id="2_asjrs"]
-[ext_resource type="Texture2D" uid="uid://drgqnyfp8reji" path="res://assets/graphics/shadow.png" id="2_pn7ti"]
+[ext_resource type="PackedScene" path="res://scenes/player/footstep.tscn" id="2_kqooj"]
 [ext_resource type="Texture2D" uid="uid://dahmnhqanhfhr" path="res://assets/graphics/fall/fall_down.png" id="2_uupgx"]
 [ext_resource type="Texture2D" uid="uid://bsbvjpp6yfvuj" path="res://assets/graphics/player_2.png" id="3_kws3v"]
 [ext_resource type="Texture2D" uid="uid://wkteguk57ic3" path="res://assets/graphics/fall/fall_up.png" id="3_m17gn"]
@@ -64,11 +63,7 @@ lock_rotation = true
 linear_damp_mode = 1
 linear_damp = 5.0
 script = ExtResource("1_bau7k")
-footstep_scene = ExtResource("2_asjrs")
-
-[node name="Shadow" type="Sprite2D" parent="."]
-scale = Vector2(0.65, 0.65)
-texture = ExtResource("2_pn7ti")
+footstep_scene = ExtResource("2_kqooj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_a66c5")
