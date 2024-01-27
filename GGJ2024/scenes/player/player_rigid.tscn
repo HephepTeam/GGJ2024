@@ -67,7 +67,7 @@ footstep_scene = ExtResource("2_kqooj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_a66c5")
-animation = &"idle"
+animation = &"fall1"
 
 [node name="FootStepPosition" type="Marker2D" parent="AnimatedSprite2D"]
 position = Vector2(-90, 0)

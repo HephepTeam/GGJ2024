@@ -12,7 +12,11 @@ func _ready():
 	pass
 
 func count_player():
-	return number_gamepad.size()
+	var i = 0
+	for gp in number_gamepad:
+		if gp != null:
+			i+=1
+	return i
 
 func _input(event):
 	if event is InputEventJoypadButton and event.is_pressed():

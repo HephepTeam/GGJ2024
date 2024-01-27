@@ -16,8 +16,10 @@ var step_active = false
 @onready var footstep_pos = $AnimatedSprite2D/FootStepPosition
 
 var state = null
+var checkpoint_pos = Vector2(0,0)
 
 var is_in_fall = false
+var dead = false
 var dashing = false
 
 func _ready():
@@ -67,12 +69,17 @@ func _physics_process(delta):
 				var tween = get_tree().create_tween()
 				tween.tween_property($AnimatedSprite2D, "scale", Vector2(0,0), 1.0).set_trans(Tween.TRANS_SINE)
 				tween.parallel().tween_property($AnimatedSprite2D, "rotation", 2*PI, 1.0).set_trans(Tween.TRANS_SINE)
-			
+				await tween.finished
+				state = states.DEAD
+				print("dead")
 		states.DASH:
 			await get_tree().create_timer(0.3).timeout
 			state = states.IDLE
 		states.DEAD:
-			print("DEAD")
+			if !dead:
+				dead = true
+				await get_tree().create_timer(0.5).timeout
+				reset_to_checkpoint()
 
 func handle_player_particles():
 	if step_active==false:
@@ -93,7 +100,20 @@ func dash(direction: Vector2):
 		direction = Vector2(1,0).rotated(animated_sprite.global_rotation)
 	apply_central_impulse(direction*dash_force)
 	state = states.DASH
+	
+func update_checkpoint(pos: Vector2):
+	checkpoint_pos = pos
 
+func reset_to_checkpoint():
+	print("Reset")
+	is_in_fall = false
+	freeze = false
+	$AnimatedSprite2D.scale = Vector2.ONE
+	$AnimatedSprite2D.rotation = -PI/2
+	self.global_transform.origin = checkpoint_pos
+	#position = checkpoint_pos
+	state = states.IDLE
+	dead = false
 
 func _on_timer_particle_timeout():
 	step_active = false
