@@ -7,4 +7,5 @@ position = Vector2(1024, 576)
 limit_bottom = 100
 script = ExtResource("1_38lcj")
 min_zoom = 6.0
-margin = Vector2(400, 400)
+max_zoom = 3.0
+margin = Vector2(300, 300)

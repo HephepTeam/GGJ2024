@@ -1,11 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://bos56m8hrbypv"]
+[gd_scene load_steps=4 format=3 uid="uid://bos56m8hrbypv"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_p5gej"]
+[ext_resource type="AudioStream" uid="uid://6hh08sxujjgp" path="res://assets/Sound/ggj_2024_boucle.mp3" id="3_rmvy5"]
 [ext_resource type="PackedScene" uid="uid://dq3w0nuu7bitg" path="res://scenes/Common/customcam.tscn" id="3_s33io"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_p5gej")
-level_length = 5
 player_nb = 2
 
 [node name="StartPositions" type="Node2D" parent="."]
@@ -23,7 +23,6 @@ position = Vector2(256, 0)
 position = Vector2(-448, 0)
 
 [node name="Customcam" parent="." instance=ExtResource("3_s33io")]
-zoom = Vector2(2, 2)
-max_zoom = 1.0
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_rmvy5")

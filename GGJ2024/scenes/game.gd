@@ -29,7 +29,11 @@ func _ready():
 		var inst = load(chunk_path+pieces).instantiate()
 		inst.position = pos
 		add_child(inst)
-		pos = inst.exits[0].global_position
+		pos.y = inst.exits[0].global_position.y
+		
+	var inst_end = load("res://scenes/chunks/end_chunk.tscn").instantiate()
+	inst_end.position = pos
+	add_child(inst_end)
 		
 	#instanciate players
 	var start_pos = $StartPositions.get_children()
@@ -42,7 +46,10 @@ func _ready():
 		add_child(inst)
 		
 	#start du compte à rebours
-		
+	$Music.play()
+
+func new_game():
+	get_tree().reload_current_scene()	
 		
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

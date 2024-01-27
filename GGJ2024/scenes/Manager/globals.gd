@@ -3,6 +3,7 @@ extends Node
 
 var players = []
 var cam = null
+var game = null
 
 var colors = [Color.AQUA, Color.BLUE_VIOLET, Color.CORNSILK, Color.CORAL]
 
@@ -13,6 +14,10 @@ func _ready():
 func add_cam_target(t):
 	if cam != null:
 		cam.add_target(t)
+		
+func player_finish(nb):
+	#player nb got 1 points
+	game.new_game()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

@@ -81,4 +81,4 @@ start_game={
 
 [rendering]
 
-environment/defaults/default_clear_color=Color(0.364706, 0.631373, 0.454902, 1)
+environment/defaults/default_clear_color=Color(0.345098, 0.792157, 0.980392, 1)

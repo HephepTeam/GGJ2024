@@ -26,9 +26,14 @@ func place_traps():
 		var hole = hole_scene.instantiate()
 		hole.position = coord+Vector2(-128, -128)
 		add_child(hole)
-	# sort a random number of traps  
+		
 
 
 func _on_checkpoint_body_entered(body):
 	if body.is_in_group("player"):
 		body.update_checkpoint($checkpoint.global_position)
+
+
+func _on_finish_line_body_entered(body):
+	if body.is_in_group("player"):
+		print(body.gamepad)
