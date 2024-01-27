@@ -1,17 +1,43 @@
-[gd_scene load_steps=5 format=3 uid="uid://ok1sa3u2d6lv"]
+[gd_scene load_steps=7 format=3 uid="uid://ok1sa3u2d6lv"]
 
 [ext_resource type="Script" path="res://scenes/player/player_rigid.gd" id="1_bau7k"]
-[ext_resource type="Texture2D" uid="uid://bx2igj2bxw5km" path="res://assets/graphics/player.png" id="1_u7r4i"]
+[ext_resource type="Texture2D" uid="uid://dvoktc0vi7ryc" path="res://assets/graphics/player_1.png" id="2_4tvpp"]
+[ext_resource type="Texture2D" uid="uid://bsbvjpp6yfvuj" path="res://assets/graphics/player_2.png" id="3_kws3v"]
+[ext_resource type="Texture2D" uid="uid://dpj4u3ng50j44" path="res://assets/graphics/player_3.png" id="4_nqd8o"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_a66c5"]
 animations = [{
+"frames": [],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"fall",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_u7r4i")
+"texture": ExtResource("2_4tvpp")
 }],
 "loop": true,
 "name": &"idle",
-"speed": 5.0
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_kws3v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_4tvpp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_nqd8o")
+}],
+"loop": true,
+"name": &"run",
+"speed": 6.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_oid03"]
@@ -25,7 +51,7 @@ script = ExtResource("1_bau7k")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_a66c5")
-animation = &"idle"
+animation = &"fall"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_oid03")
