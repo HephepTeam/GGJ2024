@@ -14,6 +14,7 @@ var step_active = false
 
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var footstep_pos = $AnimatedSprite2D/FootStepPosition
+@onready var shadow = $Shadow
 
 var state = null
 var checkpoint_pos = Vector2(0,0)
@@ -59,6 +60,7 @@ func _physics_process(delta):
 			handle_player_particles()
 			if get_dash_input():
 				dash(direction)
+				change_player_scale()
 			if abs(direction.length()) < 0.3:
 				state = states.IDLE
 		states.FALL:
@@ -88,6 +90,15 @@ func handle_player_particles():
 		var footstep_instance = footstep_scene.instantiate()
 		footstep_instance.global_position = Vector2(footstep_pos.global_position)
 		get_parent().add_child(footstep_instance)
+
+func change_player_scale():
+	var sprite_scale = animated_sprite.global_scale
+	var shadow_scale = shadow.global_scale
+	animated_sprite.global_scale = animated_sprite.global_scale.lerp(Vector2(1.6,0.4),1)
+	shadow.global_scale = shadow.global_scale.lerp(Vector2(0.4,0.4),1)
+	await get_tree().create_timer(0.1).timeout
+	animated_sprite.global_scale = sprite_scale
+	shadow.global_scale = shadow_scale
 
 func go_fall():
 	if state != states.DASH:
