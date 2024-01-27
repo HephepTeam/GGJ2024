@@ -3,14 +3,15 @@ extends Node2D
 const chunk_path = "res://scenes/chunks/chunks_pieces/"
 
 @onready var player_scene = preload("res://scenes/player/player_rigid.tscn")
-
 @export var level_length : int = 4
+@onready var pos = $Start_chunk.exits[0].global_position
+@export var player_nb = 1
 
 var pieces_scenes_path = []
 var selected_pieces = []
-var pos = Vector2(0,0)
 
-@export var player_nb = 1
+
+
 
 func _ready():
 	var colors = Globals.colors.duplicate()

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://deeyk8qsnyhl8"]
+[gd_scene load_steps=3 format=3 uid="uid://deeyk8qsnyhl8"]
 
 [ext_resource type="PackedScene" uid="uid://ok1sa3u2d6lv" path="res://scenes/player/player_rigid.tscn" id="1_6btge"]
+[ext_resource type="PackedScene" uid="uid://b0w16esgpa8b7" path="res://scenes/chunks/traps/bumper.tscn" id="2_y7opm"]
 
 [node name="Test" type="Node2D"]
 
@@ -11,3 +12,6 @@ position = Vector2(297, 216)
 position = Vector2(1660, 252)
 angular_damp_mode = 1
 gamepad = 1
+
+[node name="Bumper" parent="." instance=ExtResource("2_y7opm")]
+position = Vector2(928, 608)

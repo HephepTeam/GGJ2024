@@ -105,8 +105,10 @@ func change_player_scale():
 	animated_sprite.global_scale = sprite_scale
 	shadow.global_scale = shadow_scale
 
-func go_fall():
+func go_fall(pos):
 	if state != states.DASH:
+		move_to(pos)
+		shadow.visible = false
 		state = states.FALL
 	
 func dash(direction: Vector2):
@@ -125,6 +127,7 @@ func reset_to_checkpoint():
 	print("Reset")
 	is_in_fall = false
 	freeze = false
+	shadow.visible = true
 	$AnimatedSprite2D.scale = Vector2.ONE
 	$AnimatedSprite2D.rotation = -PI/2
 	self.global_transform.origin = checkpoint_pos

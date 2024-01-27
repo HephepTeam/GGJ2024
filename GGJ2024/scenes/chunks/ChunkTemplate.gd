@@ -2,7 +2,7 @@ extends TileMap
 
 const bumper_scene = preload("res://scenes/chunks/traps/bumper.tscn")
 const hole_scene = preload("res://scenes/chunks/traps/hole.tscn")
-
+const trap_offset = Vector2(128,128)
 var exits = []
 
 # Called when the node enters the scene tree for the first time.
@@ -25,7 +25,7 @@ func place_traps():
 	for cell_coord in cells:
 		var coord = map_to_local(cell_coord)
 		var bumper = bumper_scene.instantiate()
-		bumper.position = coord+Vector2(-128, -128)
+		bumper.position = coord
 		add_child(bumper)
 		
 	cells = get_used_cells_by_id(0,1)
