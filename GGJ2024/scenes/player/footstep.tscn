@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://da3iircjmaxe1"]
+
+[ext_resource type="Script" path="res://scenes/player/footstep.gd" id="1_1ijjy"]
+
+[sub_resource type="Curve" id="Curve_17cl0"]
+_data = [Vector2(0, 0.532076), 0.0, 0.0, 0, 0, Vector2(0.996324, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_jtecb"]
+
+[node name="footstep" type="CPUParticles2D"]
+emitting = false
+one_shot = true
+emission_shape = 1
+emission_sphere_radius = 45.0
+direction = Vector2(1, 1)
+spread = 90.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 50.0
+scale_amount_min = 10.0
+scale_amount_max = 10.0
+scale_amount_curve = SubResource("Curve_17cl0")
+color = Color(0.509804, 0.509804, 0.509804, 1)
+color_ramp = SubResource("Gradient_jtecb")
+script = ExtResource("1_1ijjy")

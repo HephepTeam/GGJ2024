@@ -6,6 +6,11 @@ const force = 100
 const dash_force = 2000
 
 @export var gamepad = 0
+
+#integration de l'effet foot step
+@export var footstep_scene: PackedScene = null
+var last_step = 0
+
 @onready var animated_sprite = $AnimatedSprite2D
 
 var state = null
@@ -48,6 +53,7 @@ func _physics_process(delta):
 			var target_force = direction * force
 			apply_central_impulse(target_force)
 			rotate_sprite(direction)
+			handle_player_particles()
 			if get_dash_input():
 				dash(direction)
 			if abs(direction.length()) < 0.3:
@@ -67,6 +73,10 @@ func _physics_process(delta):
 		states.DEAD:
 			print("DEAD")
 
+func handle_player_particles():
+	var footstep_instance = footstep_scene.instantiate()
+	footstep_instance.global_position = Vector2(global_position.x-50,global_position.y-50)
+	get_parent().add_child(footstep_instance)
 
 func go_fall():
 	if state != states.DASH:
