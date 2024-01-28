@@ -43,6 +43,7 @@ func place_traps():
 		
 	if with_item:
 		cells = get_used_cells_by_id(0,5, Vector2i(1,1))
+		#cells.append(get_used_cells_by_id(0,3))
 		
 		cells.shuffle()
 		for i in range(randi_range(3,6)):

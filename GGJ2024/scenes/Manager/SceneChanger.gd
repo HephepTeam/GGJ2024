@@ -7,6 +7,7 @@ signal scene_changed(name)
 
 @export_file var game_path = ""
 @export_file var controls_path = ""
+@export_file var bilan_path = ""
 
 
 var registered_scene = {}
@@ -17,6 +18,7 @@ var next_scene = null
 func _ready():
 	register_scene("game",game_path,"fade")
 	register_scene("controls",controls_path,"fade")
+	register_scene("bilan",bilan_path,"fade")
 	
 	
 

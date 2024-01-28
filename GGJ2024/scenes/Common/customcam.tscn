@@ -4,7 +4,7 @@
 
 [node name="Customcam" type="Camera2D"]
 position = Vector2(1024, 576)
-limit_bottom = 100
+limit_bottom = 400
 script = ExtResource("1_38lcj")
 min_zoom = 6.0
 max_zoom = 3.0

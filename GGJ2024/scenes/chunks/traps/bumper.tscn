@@ -1,11 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://b0w16esgpa8b7"]
+[gd_scene load_steps=12 format=3 uid="uid://b0w16esgpa8b7"]
 
 [ext_resource type="Script" path="res://scenes/chunks/traps/bumper.gd" id="1_8agvw"]
 [ext_resource type="Texture2D" uid="uid://li2xu1dpyph" path="res://assets/graphics/traps/bumper.png" id="2_st3hg"]
-[ext_resource type="PackedScene" uid="uid://bca88l25e55od" path="res://scenes/player/bounce_particles.tscn" id="3_nee7p"]
+[ext_resource type="Script" path="res://addons/random_audio/AudioStreamPlayerRandom2D.gd" id="3_eehw6"]
+[ext_resource type="PackedScene" path="res://scenes/player/bounce_particles.tscn" id="3_nee7p"]
+[ext_resource type="Script" path="res://addons/random_audio/AudioStreamArray.gd" id="4_u6xx7"]
+[ext_resource type="AudioStream" uid="uid://ca4th720ygvr2" path="res://assets/Sound/prout/FARTDsgn_Pet 2 (ID 0240)_LS.mp3" id="5_cgva6"]
+[ext_resource type="AudioStream" uid="uid://0guwqca7a6js" path="res://assets/Sound/prout/FARTDsgn_Prout cochons 2 (ID 1692)_LS.mp3" id="6_j2pbi"]
+[ext_resource type="AudioStream" uid="uid://clnnnro3swub8" path="res://assets/Sound/prout/FARTReal_Pet 3 (ID 0241)_LS.mp3" id="7_uyagn"]
+[ext_resource type="AudioStream" uid="uid://c11l4sfeckkdw" path="res://assets/Sound/prout/ROBTVox_Prout en synthese vocale (ID 2948)_LS.mp3" id="8_i8fx1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8mm6t"]
 radius = 100.0
+
+[sub_resource type="Resource" id="Resource_ndiis"]
+script = ExtResource("4_u6xx7")
+streams = Array[AudioStream]([ExtResource("5_cgva6"), ExtResource("6_j2pbi"), ExtResource("7_uyagn"), ExtResource("8_i8fx1")])
 
 [node name="Bumper" type="Area2D"]
 script = ExtResource("1_8agvw")
@@ -18,5 +28,11 @@ shape = SubResource("CircleShape2D_8mm6t")
 
 [node name="BounceParticles" parent="." instance=ExtResource("3_nee7p")]
 position = Vector2(116, 1)
+
+[node name="prout" type="AudioStreamPlayer2D" parent="."]
+pitch_scale = 0.70207
+script = ExtResource("3_eehw6")
+use_stream_array = true
+stream_array = SubResource("Resource_ndiis")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

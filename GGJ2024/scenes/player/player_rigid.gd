@@ -6,6 +6,7 @@ const force = 100
 const dash_force = 2000
 const ha_generator_scene = preload("res://scenes/chunks/items/ha_generator.tscn")
 const bulle_generator_scene = preload("res://scenes/chunks/items/bulle_generator.tscn")
+const respawn_particule_scene = preload("res://scenes/player/respawn.tscn")
 
 @export var gamepad = 0
 @export var footstep_scene: PackedScene = null
@@ -17,7 +18,6 @@ const bulle_generator_scene = preload("res://scenes/chunks/items/bulle_generator
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var footstep_pos = $AnimatedSprite2D/FootStepPosition
 @onready var shadow = $Shadow
-@onready var respawn = $respawn
 
 var step_active = false
 
@@ -103,11 +103,11 @@ func _physics_process(delta):
 				freeze = true
 				animated_sprite.play("fall"+str(skin_nb))
 				animated_sprite.frame = randi_range(0,1)
+				$fall_snd.play()
 				var tween = get_tree().create_tween()
 				tween.tween_property($AnimatedSprite2D, "scale", Vector2(0,0), 1.0).set_trans(Tween.TRANS_SINE)
 				tween.parallel().tween_property($AnimatedSprite2D, "rotation", 2*PI, 1.0).set_trans(Tween.TRANS_SINE)
 				await tween.finished
-				$fall_snd.play()
 				state = states.DEAD
 		states.DASH:
 			rotate_sprite(last_dash_force)
@@ -151,6 +151,7 @@ func dash(direction: Vector2):
 			direction = Vector2(1,0).rotated(animated_sprite.global_rotation)
 		last_dash_force = direction*dash_force 
 		apply_central_impulse(last_dash_force)
+		$dash_snd.play()
 		state = states.DASH
 	else:
 		dash_active=false
@@ -166,7 +167,9 @@ func reset_to_checkpoint():
 	$AnimatedSprite2D.scale = Vector2.ONE
 	$AnimatedSprite2D.rotation = -PI/2
 	self.global_transform.origin = checkpoint_pos
-	respawn.emitting = true
+	var inst= respawn_particule_scene.instantiate()
+	#inst.position = position
+	$Shadow.add_sibling(inst)
 	state = states.IDLE
 	dead = false
 	
@@ -231,7 +234,7 @@ func tickles():
 	Input.stop_joy_vibration(gamepad)
 	
 func _input(event):
-	if event.is_action_pressed("surprise"):
+	if event.is_action_pressed("surprise") and event.device == gamepad:
 		$laugh_snd.play_random()
 		var inst = ha_generator_scene.instantiate()
 		add_child(inst)

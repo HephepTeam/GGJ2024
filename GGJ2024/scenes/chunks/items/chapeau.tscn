@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bgnpj3hkp4jle"]
+[gd_scene load_steps=6 format=3 uid="uid://bgnpj3hkp4jle"]
 
 [ext_resource type="Script" path="res://scenes/chunks/items/chapeau.gd" id="1_thyvh"]
 [ext_resource type="Texture2D" uid="uid://drgqnyfp8reji" path="res://assets/graphics/shadow.png" id="2_8x6rx"]
 [ext_resource type="Texture2D" uid="uid://cvubrrpcmvqpg" path="res://assets/graphics/items/chapeau.png" id="2_whtfd"]
+[ext_resource type="AudioStream" uid="uid://miw7yb13737j" path="res://assets/Sound/HORNCele_Langue_de_belle_mere_1_(ID_1553)_LS.mp3" id="4_a0qoy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8mm6t"]
 radius = 100.0
@@ -21,5 +22,8 @@ texture = ExtResource("2_whtfd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_8mm6t")
+
+[node name="fete_snd" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_a0qoy")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

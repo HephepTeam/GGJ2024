@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c11l4sfeckkdw"
+path="res://.godot/imported/ROBTVox_Prout en synthese vocale (ID 2948)_LS.mp3-6d0ef6362c60cae605dbf811f21b4247.mp3str"
+
+[deps]
+
+source_file="res://assets/Sound/prout/ROBTVox_Prout en synthese vocale (ID 2948)_LS.mp3"
+dest_files=["res://.godot/imported/ROBTVox_Prout en synthese vocale (ID 2948)_LS.mp3-6d0ef6362c60cae605dbf811f21b4247.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

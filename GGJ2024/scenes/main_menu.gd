@@ -32,6 +32,8 @@ func start_game():
 	if nb_player >= 2:
 		Globals.player_number = nb_player
 		SceneChanger.change_scene_by_name("controls")
+	else:
+		$reuh.play()
 		
 func append_player(idx):
 	if number_gamepad[idx] == null:

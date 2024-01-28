@@ -8,6 +8,9 @@ var game = null
 var can_move = false
 var player_number = 0
 
+var round_nb_max = 4
+var round_nb = 0
+
 @export var trap_list : Array[PackedScene]
 
 
@@ -36,9 +39,18 @@ func restart_game(nb):
 	#player nb got 1 points
 	current_game_points[nb] +=1
 	await validate
-	game.new_game()
+	if round_nb < round_nb_max:
+		round_nb+=1
+		game.new_game()
+	else:
+		SceneChanger.change_scene_by_name("bilan")
 
-
+func get_highest_points_count():
+	var max = 0
+	for score in current_game_points:
+		if score > max:
+			max = score
+	return max
 func get_random_trap():
 	trap_list.shuffle()
 	return trap_list.front()

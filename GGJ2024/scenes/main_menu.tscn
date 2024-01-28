@@ -1,7 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://ddbqw6hgrf1m7"]
+[gd_scene load_steps=6 format=3 uid="uid://ddbqw6hgrf1m7"]
 
 [ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_shfb5"]
 [ext_resource type="Texture2D" uid="uid://m6jyldfk8o6v" path="res://assets/graphics/menu/background.png" id="2_eoabs"]
+[ext_resource type="Texture2D" uid="uid://dvogqsaatvgop" path="res://assets/graphics/menu/inputPrompts/xbox_button_color_a.png" id="3_bju80"]
+[ext_resource type="AudioStream" uid="uid://c0tr43u73ekr1" path="res://assets/Sound/336.mp3" id="4_a26x6"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y2k8b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_bju80")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -24,11 +40,38 @@ position = Vector2(240, -104)
 [node name="Marker2D" type="Marker2D" parent="possiblePos"]
 position = Vector2(576, 320)
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="possiblePos/Marker2D"]
+position = Vector2(-130, 40)
+sprite_frames = SubResource("SpriteFrames_y2k8b")
+autoplay = "default"
+frame_progress = 0.759635
+
 [node name="Marker2D2" type="Marker2D" parent="possiblePos"]
 position = Vector2(1344, 384)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="possiblePos/Marker2D2"]
+position = Vector2(-130, 40)
+sprite_frames = SubResource("SpriteFrames_y2k8b")
+autoplay = "default"
+frame_progress = 0.472657
 
 [node name="Marker2D3" type="Marker2D" parent="possiblePos"]
 position = Vector2(576, 768)
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="possiblePos/Marker2D3"]
+position = Vector2(-130, 40)
+sprite_frames = SubResource("SpriteFrames_y2k8b")
+autoplay = "default"
+frame_progress = 0.193106
+
 [node name="Marker2D4" type="Marker2D" parent="possiblePos"]
 position = Vector2(1344, 832)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="possiblePos/Marker2D4"]
+position = Vector2(-130, 40)
+sprite_frames = SubResource("SpriteFrames_y2k8b")
+autoplay = "default"
+frame_progress = 0.340704
+
+[node name="reuh" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_a26x6")

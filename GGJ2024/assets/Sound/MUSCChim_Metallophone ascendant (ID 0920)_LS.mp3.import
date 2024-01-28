@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dw6txtyc2tuhq"
+path="res://.godot/imported/MUSCChim_Metallophone ascendant (ID 0920)_LS.mp3-5f10fb17ddd0e483726021e4ac1fe80f.mp3str"
+
+[deps]
+
+source_file="res://assets/Sound/MUSCChim_Metallophone ascendant (ID 0920)_LS.mp3"
+dest_files=["res://.godot/imported/MUSCChim_Metallophone ascendant (ID 0920)_LS.mp3-5f10fb17ddd0e483726021e4ac1fe80f.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

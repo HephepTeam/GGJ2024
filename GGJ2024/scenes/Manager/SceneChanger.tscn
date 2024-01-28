@@ -80,6 +80,7 @@ layer = 5
 script = ExtResource("1")
 game_path = "res://scenes/game.tscn"
 controls_path = "res://scenes/MenuItem/controls_menu.tscn"
+bilan_path = "res://scenes/MenuItem/bilan_menu.tscn"
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3

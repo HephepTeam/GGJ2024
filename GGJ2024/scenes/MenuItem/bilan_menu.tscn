@@ -1,0 +1,129 @@
+[gd_scene load_steps=8 format=3 uid="uid://dwt7fov1insem"]
+
+[ext_resource type="Script" path="res://scenes/MenuItem/bilan_menu.gd" id="1_3x6o1"]
+[ext_resource type="Texture2D" uid="uid://6vf75s5nhc1h" path="res://assets/graphics/menu/background_empty.png" id="2_8lidb"]
+[ext_resource type="Texture2D" uid="uid://phqhhk5rdvf3" path="res://assets/graphics/avatar/ava0.png" id="3_mrlsu"]
+[ext_resource type="Texture2D" uid="uid://cbsa0l8nxxw3" path="res://assets/graphics/avatar/ava1.png" id="4_12tnf"]
+[ext_resource type="Texture2D" uid="uid://dmssuys6jm02e" path="res://assets/graphics/avatar/ava2.png" id="5_wjixk"]
+[ext_resource type="Texture2D" uid="uid://bbpo67lyo1chw" path="res://assets/graphics/avatar/ava3.png" id="6_lyc2o"]
+[ext_resource type="Texture2D" uid="uid://bpkogu8bi87eu" path="res://assets/graphics/menu/quoi.png" id="7_retoc"]
+
+[node name="BilanMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3x6o1")
+metadata/_edit_lock_ = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_8lidb")
+metadata/_edit_lock_ = true
+
+[node name="Panel" type="Panel" parent="."]
+modulate = Color(1, 1, 1, 0.705882)
+layout_mode = 2
+offset_left = 288.0
+offset_top = 20.0
+offset_right = 1616.0
+offset_bottom = 1060.0
+metadata/_edit_lock_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 500
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 500
+theme_override_constants/margin_bottom = 20
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+offset_left = 384.0
+offset_top = 64.0
+offset_right = 1543.0
+offset_bottom = 201.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 100
+text = "Et le grand gagnant est :"
+metadata/_edit_lock_ = true
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 2
+offset_left = 384.0
+offset_top = 208.0
+offset_right = 1543.0
+offset_bottom = 345.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 100
+text = "...quelqu'un?"
+horizontal_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Label3" type="Label" parent="."]
+layout_mode = 2
+offset_left = 384.0
+offset_top = 864.0
+offset_right = 1543.0
+offset_bottom = 1001.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 100
+text = "avec : "
+horizontal_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1216, 576)
+rotation = 0.0907571
+scale = Vector2(0.748705, 0.748705)
+texture = ExtResource("3_mrlsu")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(560, 736)
+rotation = -0.0959931
+texture = ExtResource("4_12tnf")
+flip_h = true
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(1328, 736)
+rotation = 0.0907571
+texture = ExtResource("5_wjixk")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+position = Vector2(848, 560)
+texture = ExtResource("6_lyc2o")
+flip_h = true
+metadata/_edit_lock_ = true
+
+[node name="quoi" type="Sprite2D" parent="."]
+position = Vector2(1040, 496)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("7_retoc")
+
+[node name="quoi2" type="Sprite2D" parent="."]
+position = Vector2(624, 512)
+rotation = -0.171042
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_retoc")
+
+[node name="quoi3" type="Sprite2D" parent="."]
+position = Vector2(1376, 480)
+rotation = 0.101229
+scale = Vector2(0.372911, 0.372911)
+texture = ExtResource("7_retoc")

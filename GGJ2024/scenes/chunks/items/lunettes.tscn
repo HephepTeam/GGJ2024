@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cl63hu0ptu06f"]
+[gd_scene load_steps=6 format=3 uid="uid://cl63hu0ptu06f"]
 
 [ext_resource type="Script" path="res://scenes/chunks/items/lunettes.gd" id="1_2ia7b"]
 [ext_resource type="Texture2D" uid="uid://drgqnyfp8reji" path="res://assets/graphics/shadow.png" id="2_iy3gp"]
 [ext_resource type="Texture2D" uid="uid://cldv67bhk1iqq" path="res://assets/graphics/items/lunettes.png" id="2_xc1sx"]
+[ext_resource type="AudioStream" uid="uid://dw6txtyc2tuhq" path="res://assets/Sound/MUSCChim_Metallophone ascendant (ID 0920)_LS.mp3" id="4_er8hy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8mm6t"]
 radius = 100.0
@@ -21,5 +22,8 @@ texture = ExtResource("2_xc1sx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_8mm6t")
+
+[node name="rire_snd" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_er8hy")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

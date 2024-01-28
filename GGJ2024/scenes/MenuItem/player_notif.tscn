@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ck0wredvc6blg"]
+[gd_scene load_steps=9 format=3 uid="uid://ck0wredvc6blg"]
 
 [ext_resource type="Script" path="res://scenes/MenuItem/player_notif.gd" id="1_fha2k"]
 [ext_resource type="Texture2D" uid="uid://dkoqmnb0dj7r1" path="res://assets/graphics/menu/gamepads/0.png" id="2_wpjlg"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://cyi5e7sw0u05q" path="res://assets/graphics/menu/gamepads/2.png" id="4_77ttw"]
 [ext_resource type="Texture2D" uid="uid://cwhl4owtyolkf" path="res://assets/graphics/menu/gamepads/3.png" id="5_bki0a"]
 [ext_resource type="Texture2D" uid="uid://23731x2dyw6k" path="res://assets/graphics/menu/gamepads/shadow.png" id="6_xxq3f"]
+[ext_resource type="AudioStream" uid="uid://dhkj33ginf7i5" path="res://assets/Sound/sound_duck.mp3" id="7_lopmy"]
+[ext_resource type="AudioStream" uid="uid://c0tr43u73ekr1" path="res://assets/Sound/336.mp3" id="8_pes8r"]
 
 [node name="PlayerNotif" type="Node2D"]
 script = ExtResource("1_fha2k")
@@ -29,3 +31,9 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 50
 text = "Player 1"
+
+[node name="coin" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_lopmy")
+
+[node name="reuh" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_pes8r")

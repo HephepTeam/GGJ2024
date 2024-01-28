@@ -12,6 +12,7 @@ func _process(delta):
 
 func _on_body_entered(body):
 	if body.is_in_group("player"):
+		$prout.play_random()
 		$Sprite2D.scale = Vector2(randf_range(0.8, 1.2), randf_range(0.8, 1.2))
 		var dir = global_position.direction_to(body.global_position)
 		body.add_force(dir * rebound_force)

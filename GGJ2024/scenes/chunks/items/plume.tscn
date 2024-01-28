@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://wyygu3oehgq6"]
+[gd_scene load_steps=6 format=3 uid="uid://wyygu3oehgq6"]
 
 [ext_resource type="Script" path="res://scenes/chunks/items/plume.gd" id="1_pdcld"]
 [ext_resource type="Texture2D" uid="uid://drgqnyfp8reji" path="res://assets/graphics/shadow.png" id="2_fypft"]
 [ext_resource type="Texture2D" uid="uid://bf8gqpyjkdr7r" path="res://assets/graphics/items/plume.png" id="2_jj8si"]
+[ext_resource type="AudioStream" uid="uid://3mbtjh02568p" path="res://assets/Sound/rire_crazy_frog.mp3" id="4_pcnes"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8mm6t"]
 radius = 100.0
@@ -23,5 +24,8 @@ texture = ExtResource("2_jj8si")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -1)
 shape = SubResource("CircleShape2D_8mm6t")
+
+[node name="rire_snd" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_pcnes")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

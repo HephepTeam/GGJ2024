@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scenes/chunks/ChunkTemplate.gd" id="3_bd4jh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p20ic"]
-size = Vector2(768, 152)
+size = Vector2(1024, 152)
 
 [node name="Chunk_template" type="TileMap"]
 position = Vector2(-128, 0)

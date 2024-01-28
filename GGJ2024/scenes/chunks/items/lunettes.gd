@@ -6,4 +6,7 @@ func _on_body_entered(body):
 	if body.is_in_group("player") and enabled:
 		enabled = false
 		body.invisible_man()
+		visible = false
+		$rire_snd.play()
+		await $rire_snd.finished
 		queue_free()

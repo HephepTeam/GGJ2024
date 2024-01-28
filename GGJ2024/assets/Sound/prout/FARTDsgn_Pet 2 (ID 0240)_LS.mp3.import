@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ca4th720ygvr2"
+path="res://.godot/imported/FARTDsgn_Pet 2 (ID 0240)_LS.mp3-81574c89ff47a3cbb311027384e7a416.mp3str"
+
+[deps]
+
+source_file="res://assets/Sound/prout/FARTDsgn_Pet 2 (ID 0240)_LS.mp3"
+dest_files=["res://.godot/imported/FARTDsgn_Pet 2 (ID 0240)_LS.mp3-81574c89ff47a3cbb311027384e7a416.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
