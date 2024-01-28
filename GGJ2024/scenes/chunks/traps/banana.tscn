@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://dkq7hof63bd4f"]
+
+[ext_resource type="Script" path="res://scenes/chunks/traps/banana.gd" id="1_dls0l"]
+[ext_resource type="Texture2D" uid="uid://bbf1lkhpbgcfj" path="res://assets/graphics/traps/banana.png" id="1_hj0b5"]
+[ext_resource type="AudioStream" uid="uid://oq4i5vxk5jyj" path="res://assets/Sound/glissade.mp3" id="3_o8ewy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3pa02"]
+size = Vector2(202, 55)
+
+[node name="Banana" type="Area2D"]
+script = ExtResource("1_dls0l")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_hj0b5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 52)
+shape = SubResource("RectangleShape2D_3pa02")
+
+[node name="Glissade" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_o8ewy")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
