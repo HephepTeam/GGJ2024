@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://do3cns6p2j366"]
+
+[ext_resource type="Script" path="res://scenes/chunks/items/ha_generator.gd" id="1_4nlpx"]
+[ext_resource type="Texture2D" uid="uid://dne8qigjp8t1r" path="res://assets/graphics/bulle.png" id="2_hse03"]
+
+[sub_resource type="Curve" id="Curve_svijy"]
+min_value = -1.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="BulleGenerator" type="Node2D"]
+script = ExtResource("1_4nlpx")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+amount = 12
+texture = ExtResource("2_hse03")
+emission_shape = 3
+emission_rect_extents = Vector2(60, 1)
+gravity = Vector2(0, -500)
+angle_min = -15.0
+scale_amount_min = 0.05
+scale_amount_max = 0.1
+hue_variation_curve = SubResource("Curve_svijy")

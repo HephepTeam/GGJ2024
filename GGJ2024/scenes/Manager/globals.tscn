@@ -1,6 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://ddxpx88ippckh"]
+[gd_scene load_steps=7 format=3 uid="uid://ddxpx88ippckh"]
 
 [ext_resource type="Script" path="res://scenes/Manager/globals.gd" id="1_eliik"]
+[ext_resource type="PackedScene" uid="uid://cd7sshljt5kgi" path="res://scenes/chunks/traps/banana.tscn" id="2_3nihv"]
+[ext_resource type="PackedScene" uid="uid://bgnpj3hkp4jle" path="res://scenes/chunks/items/chapeau.tscn" id="3_xrhso"]
+[ext_resource type="PackedScene" uid="uid://cl63hu0ptu06f" path="res://scenes/chunks/items/lunettes.tscn" id="4_u4fov"]
+[ext_resource type="PackedScene" uid="uid://wyygu3oehgq6" path="res://scenes/chunks/items/plume.tscn" id="5_sehea"]
+[ext_resource type="PackedScene" uid="uid://cxr0dm5q46n3v" path="res://scenes/chunks/items/cocktail.tscn" id="6_rlmr7"]
 
 [node name="Globals" type="Node"]
 script = ExtResource("1_eliik")
+trap_list = Array[PackedScene]([ExtResource("2_3nihv"), ExtResource("3_xrhso"), ExtResource("4_u4fov"), ExtResource("5_sehea"), ExtResource("6_rlmr7"), ExtResource("6_rlmr7"), ExtResource("2_3nihv")])

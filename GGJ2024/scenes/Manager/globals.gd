@@ -8,6 +8,8 @@ var game = null
 var can_move = false
 var player_number = 0
 
+@export var trap_list : Array[PackedScene]
+
 var current_game_points = [0,0,0,0]
 
 var colors = [Color.AQUA, Color.BLUE_VIOLET, Color.CORNSILK, Color.CORAL]
@@ -30,6 +32,7 @@ func restart_game(nb):
 	await validate
 	game.new_game()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+
+func get_random_trap():
+	trap_list.shuffle()
+	return trap_list.front()

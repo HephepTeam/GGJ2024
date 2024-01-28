@@ -2,6 +2,8 @@ extends TileMap
 
 signal run_ended(nb)
 
+@export var with_item = true
+
 const bumper_scene = preload("res://scenes/chunks/traps/bumper.tscn")
 const hole_scene = preload("res://scenes/chunks/traps/hole.tscn")
 const trap_offset = Vector2(128,128)
@@ -38,6 +40,18 @@ func place_traps():
 		var hole = hole_scene.instantiate()
 		hole.position = coord+Vector2(-128, -128)
 		add_child(hole)
+		
+	if with_item:
+		cells = get_used_cells_by_id(0,5, Vector2i(1,1))
+		
+		cells.shuffle()
+		for i in range(randi_range(3,6)):
+			var cell_coord = cells.pop_front()
+			var coord = map_to_local(cell_coord)
+			var trap = Globals.get_random_trap().instantiate()
+			trap.position = coord+Vector2(-128, -128)
+			add_child(trap)
+	
 
 func _on_checkpoint_body_entered(body):
 	if body.is_in_group("player"):

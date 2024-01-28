@@ -5,6 +5,7 @@ enum states {IDLE,MOVE,DASH,FALL,DEAD}
 const force = 100
 const dash_force = 2000
 const ha_generator_scene = preload("res://scenes/chunks/items/ha_generator.tscn")
+const bulle_generator_scene = preload("res://scenes/chunks/items/bulle_generator.tscn")
 
 @export var gamepad = 0
 @export var footstep_scene: PackedScene = null
@@ -193,6 +194,8 @@ func _on_timer_dash_timeout():
 
 #effet control inversé
 func inverse_controls():
+	var inst = bulle_generator_scene.instantiate()
+	add_child(inst)
 	inversed_controls = true
 	await get_tree().create_timer(3.0).timeout
 	inversed_controls = false
