@@ -5,7 +5,7 @@ const chunk_path = "res://scenes/chunks/chunks_pieces/"
 @onready var player_scene = preload("res://scenes/player/player_rigid.tscn")
 @export var level_length : int = 4
 @onready var pos = $Start_chunk.exits[0].global_position
-@export var player_nb = 1
+@export var player_nb = 0
 
 var pieces_scenes_path = []
 var selected_pieces = []
@@ -14,6 +14,8 @@ var selected_pieces = []
 
 
 func _ready():
+	Globals.game = self
+	player_nb = Globals.player_number
 	var colors = Globals.colors.duplicate()
 	#generation du level
 	#lecture du disque 

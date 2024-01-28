@@ -6,6 +6,7 @@ signal scene_changed(name)
 @onready var animation_player = $AnimationPlayer
 
 @export_file var game_path = ""
+@export_file var controls_path = ""
 
 
 var registered_scene = {}
@@ -15,6 +16,7 @@ var next_scene = null
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	register_scene("game",game_path,"fade")
+	register_scene("controls",controls_path,"fade")
 	
 	
 

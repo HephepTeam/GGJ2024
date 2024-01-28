@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cl63hu0ptu06f"]
+
+[ext_resource type="Script" path="res://scenes/chunks/items/lunettes.gd" id="1_2ia7b"]
+[ext_resource type="Texture2D" uid="uid://cldv67bhk1iqq" path="res://assets/graphics/items/lunettes.png" id="2_xc1sx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8mm6t"]
+radius = 100.0
+
+[node name="Lunettes" type="Area2D"]
+script = ExtResource("1_2ia7b")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_xc1sx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_8mm6t")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

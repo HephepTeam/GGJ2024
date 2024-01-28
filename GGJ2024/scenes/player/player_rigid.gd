@@ -4,6 +4,7 @@ enum states {IDLE,MOVE,DASH,FALL,DEAD}
 
 const force = 100
 const dash_force = 2000
+const ha_generator_scene = preload("res://scenes/chunks/items/ha_generator.tscn")
 
 @export var gamepad = 0
 @export var footstep_scene: PackedScene = null
@@ -23,6 +24,9 @@ var dash_active = true
 
 var state = null
 var checkpoint_pos = Vector2(0,0)
+var inversed_controls = false
+var stronger = false
+var free_rotation = false
 
 var last_dash_force = Vector2.ZERO
 
@@ -38,9 +42,15 @@ func _ready():
 func get_joystick_inputs():
 	var direction
 	if Globals.can_move:
-		direction = Vector2(
-			Input.get_joy_axis(gamepad,JOY_AXIS_LEFT_X),
-			Input.get_joy_axis(gamepad,JOY_AXIS_LEFT_Y)
+		if inversed_controls:
+			direction = Vector2(
+				-Input.get_joy_axis(gamepad,JOY_AXIS_LEFT_X),
+				-Input.get_joy_axis(gamepad,JOY_AXIS_LEFT_Y)
+			)
+		else:
+			direction = Vector2(
+				Input.get_joy_axis(gamepad,JOY_AXIS_LEFT_X),
+				Input.get_joy_axis(gamepad,JOY_AXIS_LEFT_Y)
 		)
 	else:
 		direction = Vector2.ZERO
@@ -51,7 +61,10 @@ func get_dash_input():
 		return Input.is_action_just_pressed("dash"+str(gamepad))
 	
 func rotate_sprite(direction: Vector2):
-	animated_sprite.global_rotation = lerp(animated_sprite.global_rotation,direction.angle(),0.5)
+	if !free_rotation:
+		animated_sprite.global_rotation = lerp(animated_sprite.global_rotation,direction.angle(),0.5)
+	else:
+		pass
 
 func _physics_process(delta):
 	match state:
@@ -158,7 +171,15 @@ func _on_timer_particle_timeout():
 
 func add_force(force: Vector2):
 	if state in [states.IDLE,states.MOVE,states.DASH ]:
-		apply_central_impulse(force)
+		if !stronger:
+			apply_central_impulse(force)
+			
+func get_rotated_idiot():
+	free_rotation = true
+	var tw = get_tree().create_tween()
+	tw.tween_property($AnimatedSprite2D, "rotation_degrees", 1440, 2.0).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
+	await tw.finished
+	free_rotation = false
 
 func _on_hurtbox_body_entered(body):
 	if body.is_in_group("player"):
@@ -169,3 +190,38 @@ func _on_timer_dash_timeout():
 	dash_count = 0
 	if dash_active==false:
 		dash_active = true
+
+#effet control inversé
+func inverse_controls():
+	inversed_controls = true
+	await get_tree().create_timer(3.0).timeout
+	inversed_controls = false
+	
+#effet devient invisible/transparent*
+func invisible_man():
+	$AnimatedSprite2D.modulate.a = 0.3
+	$Shadow.modulate.a = 0.0
+	await get_tree().create_timer(3.0).timeout
+	$AnimatedSprite2D.modulate.a = 1.0
+	$Shadow.modulate.a = 1.0
+	
+#immunisé aux dash et rebonds
+func get_stronger():
+	stronger = true
+	$AnimatedSprite2D/chapo.visible = true
+	await get_tree().create_timer(3.0).timeout
+	stronger = false
+	$AnimatedSprite2D/chapo.visible = false
+	
+#fait vibrer la manette a mort
+func tickles():
+	var inst = ha_generator_scene.instantiate()
+	add_child(inst)
+	Input.start_joy_vibration(gamepad, 0.8, 1.0, 3.0)
+	await get_tree().create_timer(3.0).timeout
+	Input.stop_joy_vibration(gamepad)
+	
+func _input(event):
+	if event.is_action_pressed("surprise"):
+		var inst = ha_generator_scene.instantiate()
+		add_child(inst)

@@ -1,10 +1,14 @@
 extends Node
 
+signal validate
 
 var players = []
 var cam = null
 var game = null
 var can_move = false
+var player_number = 0
+
+var current_game_points = [0,0,0,0]
 
 var colors = [Color.AQUA, Color.BLUE_VIOLET, Color.CORNSILK, Color.CORAL]
 
@@ -12,12 +16,18 @@ var colors = [Color.AQUA, Color.BLUE_VIOLET, Color.CORNSILK, Color.CORAL]
 func _ready():
 	pass # Replace with function body.
 
+func _input(event):
+	if event.is_action_pressed("validate"):
+		validate.emit()
+
 func add_cam_target(t):
 	if cam != null:
 		cam.add_target(t)
 		
-func player_finish(nb):
+func restart_game(nb):
 	#player nb got 1 points
+	current_game_points[nb] +=1
+	await validate
 	game.new_game()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -1,14 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://ck0wredvc6blg"]
+[gd_scene load_steps=7 format=3 uid="uid://ck0wredvc6blg"]
 
 [ext_resource type="Script" path="res://scenes/MenuItem/player_notif.gd" id="1_fha2k"]
-[ext_resource type="Texture2D" uid="uid://bbglitvc7qque" path="res://assets/graphics/menu/gamepad.png" id="1_stvia"]
+[ext_resource type="Texture2D" uid="uid://dkoqmnb0dj7r1" path="res://assets/graphics/menu/gamepads/0.png" id="2_wpjlg"]
+[ext_resource type="Texture2D" uid="uid://ccso8gjbkqjqf" path="res://assets/graphics/menu/gamepads/1.png" id="3_e2p5n"]
+[ext_resource type="Texture2D" uid="uid://cyi5e7sw0u05q" path="res://assets/graphics/menu/gamepads/2.png" id="4_77ttw"]
+[ext_resource type="Texture2D" uid="uid://cwhl4owtyolkf" path="res://assets/graphics/menu/gamepads/3.png" id="5_bki0a"]
+[ext_resource type="Texture2D" uid="uid://23731x2dyw6k" path="res://assets/graphics/menu/gamepads/shadow.png" id="6_xxq3f"]
 
 [node name="PlayerNotif" type="Node2D"]
 script = ExtResource("1_fha2k")
+textu = Array[Texture]([ExtResource("2_wpjlg"), ExtResource("3_e2p5n"), ExtResource("4_77ttw"), ExtResource("5_bki0a")])
+
+[node name="shadow" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+texture = ExtResource("6_xxq3f")
 
 [node name="gamepad" type="Sprite2D" parent="."]
 scale = Vector2(0.01, 0.01)
-texture = ExtResource("1_stvia")
+texture = ExtResource("2_wpjlg")
 
 [node name="Label" type="Label" parent="."]
 modulate = Color(1, 1, 1, 0)
@@ -16,5 +25,7 @@ offset_left = -88.0
 offset_top = 128.0
 offset_right = 106.0
 offset_bottom = 197.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 50
 text = "Player 1"

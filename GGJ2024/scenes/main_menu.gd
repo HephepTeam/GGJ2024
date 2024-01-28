@@ -30,7 +30,8 @@ func _input(event):
 			
 func start_game():
 	if nb_player >= 2:
-		SceneChanger.change_scene_by_name("game")
+		Globals.player_number = nb_player
+		SceneChanger.change_scene_by_name("controls")
 		
 func append_player(idx):
 	if number_gamepad[idx] == null:

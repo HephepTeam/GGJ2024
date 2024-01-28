@@ -43,13 +43,13 @@ position = Vector2(0, -880)
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(-2368, -296)
 motion_scale = Vector2(1.2, 1.2)
-motion_mirroring = Vector2(2920, 2080)
+motion_offset = Vector2(-540, 1920)
+motion_mirroring = Vector2(0, 2080)
 
-[node name="Background" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+[node name="Background" type="Sprite2D" parent="ParallaxBackground"]
 z_index = -2
-position = Vector2(1024, -416)
+texture_repeat = 2
 scale = Vector2(2, 2)
 texture = ExtResource("3_5ys4y")
 
@@ -60,3 +60,16 @@ modulate = Color(0.105882, 0.623529, 0.439216, 1)
 offset_left = 468.0
 offset_right = 468.0
 offset_bottom = 0.0
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Score" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0

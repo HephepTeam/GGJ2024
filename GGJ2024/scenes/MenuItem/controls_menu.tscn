@@ -1,0 +1,118 @@
+[gd_scene load_steps=9 format=3 uid="uid://cww1cvaw7s44c"]
+
+[ext_resource type="Texture2D" uid="uid://6vf75s5nhc1h" path="res://assets/graphics/menu/background_empty.png" id="1_icki8"]
+[ext_resource type="Script" path="res://scenes/MenuItem/controls_menu.gd" id="1_k8mut"]
+[ext_resource type="Texture2D" uid="uid://dlhnxekiii0bf" path="res://assets/graphics/menu/inputPrompts/xbox_stick_l.png" id="2_j14qv"]
+[ext_resource type="Texture2D" uid="uid://dvogqsaatvgop" path="res://assets/graphics/menu/inputPrompts/xbox_button_color_a.png" id="3_w7diu"]
+[ext_resource type="Texture2D" uid="uid://dybs12esc3bor" path="res://assets/graphics/menu/inputPrompts/xbox_button_color_b.png" id="4_bs4ac"]
+[ext_resource type="Texture2D" uid="uid://8nmph8a580cm" path="res://assets/graphics/menu/inputPrompts/xbox_button_color_x.png" id="5_anq56"]
+[ext_resource type="Texture2D" uid="uid://dise66cku1bgw" path="res://assets/graphics/menu/inputPrompts/xbox_button_color_y.png" id="6_rdkd8"]
+[ext_resource type="Texture2D" uid="uid://dl80qw7t1nwvk" path="res://assets/graphics/menu/inputPrompts/xbox_button_menu.png" id="8_npx8b"]
+
+[node name="ControlsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_k8mut")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_icki8")
+
+[node name="Panel" type="Panel" parent="."]
+modulate = Color(1, 1, 1, 0.705882)
+layout_mode = 2
+offset_left = 500.0
+offset_top = 20.0
+offset_right = 1420.0
+offset_bottom = 1060.0
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 500
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 500
+theme_override_constants/margin_bottom = 20
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 30
+columns = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+texture = ExtResource("2_j14qv")
+
+[node name="Label" type="Label" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 100
+text = "BOUGER"
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+texture = ExtResource("3_w7diu")
+
+[node name="Label2" type="Label" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 100
+text = "DASHER"
+
+[node name="TextureRect3" type="TextureRect" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+texture = ExtResource("4_bs4ac")
+
+[node name="Label3" type="Label" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 100
+text = "RIEN"
+
+[node name="TextureRect4" type="TextureRect" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+texture = ExtResource("5_anq56")
+
+[node name="Label4" type="Label" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 100
+text = "QUE DALLE"
+
+[node name="TextureRect5" type="TextureRect" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+texture = ExtResource("6_rdkd8")
+
+[node name="Label5" type="Label" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 100
+text = "????"
+
+[node name="TextureRect6" type="TextureRect" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+texture = ExtResource("8_npx8b")
+
+[node name="Label6" type="Label" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 60
+text = "Démarrer le jeu"
