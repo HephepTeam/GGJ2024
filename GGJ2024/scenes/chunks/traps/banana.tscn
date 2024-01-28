@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dkq7hof63bd4f"]
+[gd_scene load_steps=5 format=3 uid="uid://cd7sshljt5kgi"]
 
 [ext_resource type="Script" path="res://scenes/chunks/traps/banana.gd" id="1_dls0l"]
 [ext_resource type="Texture2D" uid="uid://bbf1lkhpbgcfj" path="res://assets/graphics/traps/banana.png" id="1_hj0b5"]

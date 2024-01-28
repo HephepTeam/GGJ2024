@@ -177,7 +177,7 @@ func add_force(force: Vector2):
 func get_rotated_idiot():
 	free_rotation = true
 	var tw = get_tree().create_tween()
-	tw.tween_property($AnimatedSprite2D, "rotation_degrees", 1440, 2.0).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
+	tw.tween_property($AnimatedSprite2D, "rotation_degrees", 1080, 1.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
 	await tw.finished
 	free_rotation = false
 
