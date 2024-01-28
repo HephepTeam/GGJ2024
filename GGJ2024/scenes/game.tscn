@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_p5gej"]
 [ext_resource type="Texture2D" uid="uid://dbja4ck0g2bca" path="res://assets/graphics/terrains/background.png" id="3_5ys4y"]
-[ext_resource type="AudioStream" uid="uid://6hh08sxujjgp" path="res://assets/Sound/ggj_2024_boucle.mp3" id="3_rmvy5"]
 [ext_resource type="PackedScene" uid="uid://dq3w0nuu7bitg" path="res://scenes/Common/customcam.tscn" id="3_s33io"]
 [ext_resource type="PackedScene" uid="uid://ct3s4prwrc2i" path="res://scenes/chunks/start_chunk.tscn" id="5_b4vbb"]
 [ext_resource type="PackedScene" uid="uid://cnsppthpaihtt" path="res://scenes/MenuItem/number.tscn" id="6_qoqwo"]
 [ext_resource type="PackedScene" uid="uid://cp17ej52nmfmd" path="res://scenes/MenuItem/Winner.tscn" id="7_t70rk"]
+[ext_resource type="PackedScene" uid="uid://wqchel0ria2l" path="res://scenes/Common/confettis.tscn" id="8_128dp"]
 [ext_resource type="PackedScene" uid="uid://cgq38ugyhdydp" path="res://scenes/MenuItem/user_score.tscn" id="8_vshdy"]
 
 [node name="Game" type="Node2D"]
@@ -29,9 +29,6 @@ position = Vector2(300, -72)
 position = Vector2(-300, -72)
 
 [node name="Customcam" parent="." instance=ExtResource("3_s33io")]
-
-[node name="Music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_rmvy5")
 
 [node name="Start_chunk" parent="." instance=ExtResource("5_b4vbb")]
 layer_0/name = ""
@@ -100,6 +97,9 @@ offset_left = 1536.0
 offset_top = 576.0
 offset_right = 0.0
 offset_bottom = 8.0
+
+[node name="confettis" parent="CanvasLayer" instance=ExtResource("8_128dp")]
+emitting = false
 
 [editable path="CanvasLayer/Control/UserScore1"]
 [editable path="CanvasLayer/Control/UserScore2"]

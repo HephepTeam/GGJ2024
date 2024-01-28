@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/Cri_chute.mp3-a402307c8e73178de0ab1ca1f7094af
 [params]
 
 loop=false
-loop_offset=0
-bpm=0
+loop_offset=0.0
+bpm=0.0
 beat_count=0
 bar_beats=4

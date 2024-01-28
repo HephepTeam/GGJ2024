@@ -57,10 +57,11 @@ func _ready():
 		add_child(inst)
 		
 	#start du compte à rebours
-	$Music.play()
+	Globals.start_music()
 
 func _on_run_ended(nb):
 	$CanvasLayer/Winner.go(nb)
+	$CanvasLayer/confettis.emitting = true
 
 func new_game():
 	SceneChanger.change_scene_by_name("game")	

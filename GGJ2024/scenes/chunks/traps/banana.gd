@@ -9,7 +9,7 @@ func _on_body_entered(body):
 		$Sprite2D.scale = Vector2(randf_range(0.8, 1.2), randf_range(0.8, 1.2))
 		var dir = body.get_joystick_inputs().rotated(randf_range(-PI/4,PI/4))
 		body.add_force(dir * rebound_force)
-		body.get_rotated_idiot()
+		body.get_rotated()
 		glissade.play()
 		visible = false
 		await glissade.finished

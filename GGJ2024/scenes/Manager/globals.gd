@@ -24,6 +24,10 @@ func _input(event):
 	if event.is_action_pressed("validate"):
 		validate.emit()
 
+func start_music():
+	if !$Music.playing:
+		$Music.play()
+
 func add_cam_target(t):
 	if cam != null:
 		cam.add_target(t)

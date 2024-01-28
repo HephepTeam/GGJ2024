@@ -181,7 +181,7 @@ func add_force(force: Vector2):
 		if !stronger:
 			apply_central_impulse(force)
 			
-func get_rotated_idiot():
+func get_rotated(_idiot):
 	free_rotation = true
 	var tw = get_tree().create_tween()
 	tw.tween_property($AnimatedSprite2D, "rotation_degrees", 1080, 1.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)

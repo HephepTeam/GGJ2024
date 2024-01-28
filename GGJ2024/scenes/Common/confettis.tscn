@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://wqchel0ria2l"]
+
+[ext_resource type="Texture2D" uid="uid://ejv6it1bm7gn" path="res://assets/graphics/confetti.png" id="1_y8s6k"]
+
+[sub_resource type="Curve" id="Curve_wn0i8"]
+min_value = -1.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="confettis" type="CPUParticles2D"]
+position = Vector2(960, 0)
+amount = 800
+lifetime = 5.0
+randomness = 0.4
+lifetime_randomness = 0.2
+local_coords = true
+texture = ExtResource("1_y8s6k")
+emission_shape = 3
+emission_rect_extents = Vector2(960, 1)
+gravity = Vector2(0, 150)
+angular_velocity_max = 120.0
+angle_min = -45.0
+angle_max = 45.0
+scale_amount_min = 0.9
+scale_amount_max = 1.1
+color = Color(0.854902, 0.25098, 0.521569, 1)
+hue_variation_min = -1.0
+hue_variation_max = 1.0
+hue_variation_curve = SubResource("Curve_wn0i8")
