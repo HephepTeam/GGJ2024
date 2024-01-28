@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://wkteguk57ic3"
-path="res://.godot/imported/fall_up.png-a6106034b7097b102b7960c417d02059.ctex"
+uid="uid://dvoktc0vi7ryc"
+path="res://.godot/imported/3_idle.png-80739ac6b657f6aaed4c27335e5f6c61.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/graphics/fall/fall_up.png"
-dest_files=["res://.godot/imported/fall_up.png-a6106034b7097b102b7960c417d02059.ctex"]
+source_file="res://assets/graphics/skins/3_idle.png"
+dest_files=["res://.godot/imported/3_idle.png-80739ac6b657f6aaed4c27335e5f6c61.ctex"]
 
 [params]
 

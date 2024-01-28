@@ -25,6 +25,10 @@ SceneChanger="*res://scenes/Manager/SceneChanger.tscn"
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/random_audio/plugin.cfg")
+
 [input]
 
 move_up={

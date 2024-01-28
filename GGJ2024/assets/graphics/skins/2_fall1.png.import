@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dvoktc0vi7ryc"
-path="res://.godot/imported/player_1.png-c6a28ca548870dac64d792583ad97a70.ctex"
+uid="uid://d6g4hh4np7h4"
+path="res://.godot/imported/2_fall1.png-28762ed8e4165c03fef331df6139a011.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/graphics/player_1.png"
-dest_files=["res://.godot/imported/player_1.png-c6a28ca548870dac64d792583ad97a70.ctex"]
+source_file="res://assets/graphics/skins/2_fall1.png"
+dest_files=["res://.godot/imported/2_fall1.png-28762ed8e4165c03fef331df6139a011.ctex"]
 
 [params]
 

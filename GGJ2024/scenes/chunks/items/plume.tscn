@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://wyygu3oehgq6"]
+[gd_scene load_steps=5 format=3 uid="uid://wyygu3oehgq6"]
 
 [ext_resource type="Script" path="res://scenes/chunks/items/plume.gd" id="1_pdcld"]
+[ext_resource type="Texture2D" uid="uid://drgqnyfp8reji" path="res://assets/graphics/shadow.png" id="2_fypft"]
 [ext_resource type="Texture2D" uid="uid://bf8gqpyjkdr7r" path="res://assets/graphics/items/plume.png" id="2_jj8si"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8mm6t"]
@@ -9,11 +10,18 @@ radius = 100.0
 [node name="Plume" type="Area2D"]
 script = ExtResource("1_pdcld")
 
+[node name="shadow" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.596078)
+position = Vector2(-1.49999, 81.25)
+scale = Vector2(0.952555, 0.395985)
+texture = ExtResource("2_fypft")
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(26, -24)
 texture = ExtResource("2_jj8si")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
 shape = SubResource("CircleShape2D_8mm6t")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,6 +1,7 @@
 extends Node2D
 
 const chunk_path = "res://scenes/chunks/chunks_pieces/"
+var skin_nb_array = [0,1,2,3]
 
 @onready var player_scene = preload("res://scenes/player/player_rigid.tscn")
 @export var level_length : int = 4
@@ -44,9 +45,14 @@ func _ready():
 	for pl in range(player_nb):
 		var inst = player_scene.instantiate()
 		inst.gamepad = pl
+		
 		inst.position = start_pos[pl].position 
-		colors.shuffle()
-		inst.modulate = colors.pop_front()
+		skin_nb_array.shuffle()
+		inst.skin_nb = skin_nb_array.pop_front()
+		Globals.playertranslation_table[pl] = inst.skin_nb
+		$CanvasLayer/Control.get_children()[pl].set_p_nb(pl)
+		$CanvasLayer/Control.get_children()[pl].visible = true
+		#inst.modulate = colors.pop_front()
 		inst.rotation_degrees = -90
 		add_child(inst)
 		
@@ -57,7 +63,7 @@ func _on_run_ended(nb):
 	$CanvasLayer/Winner.go(nb)
 
 func new_game():
-	get_tree().reload_current_scene()	
+	SceneChanger.change_scene_by_name("game")	
 		
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

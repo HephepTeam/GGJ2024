@@ -35,6 +35,8 @@ var is_in_fall = false
 var dead = false
 var dashing = false
 
+var skin_nb = 0
+
 func _ready():
 	dash_count = 0
 	Globals.add_cam_target(self)
@@ -70,7 +72,7 @@ func rotate_sprite(direction: Vector2):
 func _physics_process(delta):
 	match state:
 		states.IDLE:
-			animated_sprite.play("idle")
+			animated_sprite.play("idle"+str(skin_nb))
 			var direction = get_joystick_inputs()
 			rotate_sprite(direction)
 			if get_dash_input():
@@ -81,7 +83,7 @@ func _physics_process(delta):
 				state = states.MOVE
 		states.MOVE:
 			if animated_sprite.animation != "run":
-				animated_sprite.play("run")
+				animated_sprite.play("run"+str(skin_nb))
 			var direction = get_joystick_inputs()
 			# Using the follow steering behavior.
 			var target_force = direction * force
@@ -98,11 +100,13 @@ func _physics_process(delta):
 			if !is_in_fall:
 				is_in_fall = true
 				freeze = true
-				animated_sprite.play("fall"+str(randi_range(0,1)))
+				animated_sprite.play("fall"+str(skin_nb))
+				animated_sprite.frame = randi_range(0,1)
 				var tween = get_tree().create_tween()
 				tween.tween_property($AnimatedSprite2D, "scale", Vector2(0,0), 1.0).set_trans(Tween.TRANS_SINE)
 				tween.parallel().tween_property($AnimatedSprite2D, "rotation", 2*PI, 1.0).set_trans(Tween.TRANS_SINE)
 				await tween.finished
+				$fall_snd.play()
 				state = states.DEAD
 		states.DASH:
 			rotate_sprite(last_dash_force)
@@ -226,5 +230,6 @@ func tickles():
 	
 func _input(event):
 	if event.is_action_pressed("surprise"):
+		$laugh_snd.play_random()
 		var inst = ha_generator_scene.instantiate()
 		add_child(inst)

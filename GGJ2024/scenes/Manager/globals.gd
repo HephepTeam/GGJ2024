@@ -10,6 +10,8 @@ var player_number = 0
 
 @export var trap_list : Array[PackedScene]
 
+
+var playertranslation_table = [0,0,0,0]
 var current_game_points = [0,0,0,0]
 
 var colors = [Color.AQUA, Color.BLUE_VIOLET, Color.CORNSILK, Color.CORAL]
