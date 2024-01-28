@@ -17,6 +17,7 @@ const bulle_generator_scene = preload("res://scenes/chunks/items/bulle_generator
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var footstep_pos = $AnimatedSprite2D/FootStepPosition
 @onready var shadow = $Shadow
+@onready var respawn = $respawn
 
 var step_active = false
 
@@ -165,6 +166,7 @@ func reset_to_checkpoint():
 	$AnimatedSprite2D.scale = Vector2.ONE
 	$AnimatedSprite2D.rotation = -PI/2
 	self.global_transform.origin = checkpoint_pos
+	respawn.emitting = true
 	state = states.IDLE
 	dead = false
 	

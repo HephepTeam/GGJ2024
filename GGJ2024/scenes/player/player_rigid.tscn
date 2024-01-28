@@ -1,7 +1,7 @@
-[gd_scene load_steps=33 format=3 uid="uid://ok1sa3u2d6lv"]
+[gd_scene load_steps=35 format=3 uid="uid://ok1sa3u2d6lv"]
 
 [ext_resource type="Script" path="res://scenes/player/player_rigid.gd" id="1_bau7k"]
-[ext_resource type="PackedScene" path="res://scenes/player/footstep.tscn" id="2_asjrs"]
+[ext_resource type="PackedScene" uid="uid://da3iircjmaxe1" path="res://scenes/player/footstep.tscn" id="2_asjrs"]
 [ext_resource type="Texture2D" uid="uid://drgqnyfp8reji" path="res://assets/graphics/shadow.png" id="2_pn7ti"]
 [ext_resource type="Texture2D" uid="uid://bmltq1lc7ao8v" path="res://assets/graphics/skins/0_fall0.png" id="4_3f77v"]
 [ext_resource type="Texture2D" uid="uid://wkteguk57ic3" path="res://assets/graphics/skins/3_fall0.png" id="4_pfjge"]
@@ -28,6 +28,12 @@
 [ext_resource type="Script" path="res://addons/random_audio/AudioStreamPlayerRandom2D.gd" id="26_ykge8"]
 [ext_resource type="Script" path="res://addons/random_audio/AudioStreamArray.gd" id="27_hhfd1"]
 [ext_resource type="AudioStream" uid="uid://dhkj33ginf7i5" path="res://assets/Sound/sound_duck.mp3" id="28_bf7ym"]
+[ext_resource type="PackedScene" uid="uid://jp13v37jn1pe" path="res://scenes/player/respawn.tscn" id="29_2iws4"]
+
+[sub_resource type="Curve" id="Curve_fkaup"]
+resource_local_to_scene = true
+_data = [Vector2(0.00367647, 1), 0.0, 1.69057, 0, 0, Vector2(1, 0.018868), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_a66c5"]
 animations = [{
@@ -181,6 +187,9 @@ linear_damp_mode = 1
 linear_damp = 5.0
 script = ExtResource("1_bau7k")
 footstep_scene = ExtResource("2_asjrs")
+
+[node name="respawn" parent="." instance=ExtResource("29_2iws4")]
+scale_amount_curve = SubResource("Curve_fkaup")
 
 [node name="Shadow" type="Sprite2D" parent="."]
 scale = Vector2(0.65, 0.65)
