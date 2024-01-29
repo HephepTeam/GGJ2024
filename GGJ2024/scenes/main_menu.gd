@@ -31,7 +31,7 @@ func _input(event):
 		if event.is_action_pressed("dash0"):
 			append_player(0,true)
 		elif event.is_action_pressed("dash1"):
-			append_player(1, true)
+			append_player(1,true)
 		elif event.is_action_pressed("keyboard_back"):
 			remove_player(0)
 			remove_player(1)
