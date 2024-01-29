@@ -78,6 +78,7 @@ _data = {
 [node name="SceneChanger" type="CanvasLayer"]
 layer = 5
 script = ExtResource("1")
+main_menu_path = "res://scenes/main_menu.tscn"
 game_path = "res://scenes/game.tscn"
 controls_path = "res://scenes/MenuItem/controls_menu.tscn"
 bilan_path = "res://scenes/MenuItem/bilan_menu.tscn"

@@ -12,7 +12,7 @@ point_count = 2
 script = ExtResource("1_5t1ji")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
-amount = 12
+amount = 6
 texture = ExtResource("1_glp53")
 emission_shape = 3
 emission_rect_extents = Vector2(120, 1)

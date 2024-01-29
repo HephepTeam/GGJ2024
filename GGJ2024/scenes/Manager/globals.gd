@@ -10,7 +10,10 @@ var player_number = 0
 
 var round_nb_max = 4
 var round_nb = 0
+var player_0_kb = false
+var player_1_kb = false
 
+@export var chunk_list : Array[PackedScene]
 @export var trap_list : Array[PackedScene]
 
 
@@ -30,6 +33,9 @@ func _input(event):
 func start_music():
 	if !$Music.playing:
 		$Music.play()
+		
+func stop_music():
+	$Music.stop()
 
 func add_cam_target(t):
 	if cam != null:
@@ -43,6 +49,7 @@ func restart_game(nb):
 		round_nb+=1
 		game.new_game()
 	else:
+		stop_music()
 		SceneChanger.change_scene_by_name("bilan")
 
 func get_highest_points_count():

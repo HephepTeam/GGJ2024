@@ -1,16 +1,25 @@
-[gd_scene load_steps=8 format=3 uid="uid://ddxpx88ippckh"]
+[gd_scene load_steps=16 format=3 uid="uid://ddxpx88ippckh"]
 
 [ext_resource type="Script" path="res://scenes/Manager/globals.gd" id="1_eliik"]
 [ext_resource type="PackedScene" uid="uid://cd7sshljt5kgi" path="res://scenes/chunks/traps/banana.tscn" id="2_3nihv"]
+[ext_resource type="PackedScene" uid="uid://6qw7ixtj05bs" path="res://scenes/chunks/chunks_pieces/chunk0.tscn" id="2_hdhsg"]
+[ext_resource type="PackedScene" uid="uid://b2c5pnny18woh" path="res://scenes/chunks/chunks_pieces/chunk1.tscn" id="3_lik8p"]
 [ext_resource type="PackedScene" uid="uid://bgnpj3hkp4jle" path="res://scenes/chunks/items/chapeau.tscn" id="3_xrhso"]
+[ext_resource type="PackedScene" uid="uid://cbn450vg6cyot" path="res://scenes/chunks/chunks_pieces/chunk2.tscn" id="4_3gg0o"]
 [ext_resource type="PackedScene" uid="uid://cl63hu0ptu06f" path="res://scenes/chunks/items/lunettes.tscn" id="4_u4fov"]
+[ext_resource type="PackedScene" uid="uid://k2g2i2sey6fy" path="res://scenes/chunks/chunks_pieces/chunk3.tscn" id="5_duk8s"]
 [ext_resource type="PackedScene" uid="uid://wyygu3oehgq6" path="res://scenes/chunks/items/plume.tscn" id="5_sehea"]
+[ext_resource type="PackedScene" uid="uid://d1tm5jnqxm3qx" path="res://scenes/chunks/chunks_pieces/chunk4.tscn" id="6_13qg7"]
 [ext_resource type="PackedScene" uid="uid://cxr0dm5q46n3v" path="res://scenes/chunks/items/cocktail.tscn" id="6_rlmr7"]
-[ext_resource type="AudioStream" uid="uid://6hh08sxujjgp" path="res://assets/Sound/ggj_2024_boucle.mp3" id="7_gkenb"]
+[ext_resource type="PackedScene" uid="uid://bu01tq4uwyn1m" path="res://scenes/chunks/chunks_pieces/chunk5.tscn" id="7_e52kr"]
+[ext_resource type="PackedScene" uid="uid://desjgteludfnv" path="res://scenes/chunks/chunks_pieces/chunk6.tscn" id="8_r4j16"]
+[ext_resource type="PackedScene" uid="uid://dijo6c3e1d1bx" path="res://scenes/chunks/chunks_pieces/chunk7.tscn" id="9_on7fn"]
+[ext_resource type="AudioStream" uid="uid://dbbglfi67623x" path="res://assets/Sound/ggj_2024_final.mp3" id="15_v1abr"]
 
 [node name="Globals" type="Node"]
 script = ExtResource("1_eliik")
+chunk_list = Array[PackedScene]([ExtResource("2_hdhsg"), ExtResource("3_lik8p"), ExtResource("4_3gg0o"), ExtResource("5_duk8s"), ExtResource("6_13qg7"), ExtResource("7_e52kr"), ExtResource("8_r4j16"), ExtResource("9_on7fn")])
 trap_list = Array[PackedScene]([ExtResource("2_3nihv"), ExtResource("3_xrhso"), ExtResource("4_u4fov"), ExtResource("5_sehea"), ExtResource("6_rlmr7"), ExtResource("6_rlmr7"), ExtResource("2_3nihv")])
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("7_gkenb")
+stream = ExtResource("15_v1abr")

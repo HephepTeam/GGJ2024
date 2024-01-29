@@ -61,6 +61,7 @@ func _on_checkpoint_body_entered(body):
 
 func _on_finish_line_body_entered(body):
 	if body.is_in_group("player"):
-		print(body.gamepad)
+		$FinishLine.monitoring = false
+		$FinishLine.monitorable = false
 		Globals.can_move = false
 		run_ended.emit(body.gamepad)

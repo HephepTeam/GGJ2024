@@ -1,8 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://c35kn5et4dx3i"]
+[gd_scene load_steps=5 format=3 uid="uid://c35kn5et4dx3i"]
 
 [ext_resource type="PackedScene" uid="uid://ok1sa3u2d6lv" path="res://scenes/player/player_rigid.tscn" id="1_4jr76"]
+[ext_resource type="Script" path="res://scenes/player/test_mika.gd" id="1_q65ke"]
+[ext_resource type="PackedScene" uid="uid://cxr0dm5q46n3v" path="res://scenes/chunks/items/cocktail.tscn" id="3_epkku"]
+[ext_resource type="Texture2D" uid="uid://xo52x85uc6nb" path="res://assets/graphics/terrains/nuage2.png" id="3_odxgd"]
 
 [node name="Test" type="Node2D"]
+script = ExtResource("1_q65ke")
+
+[node name="Nuage2" type="Sprite2D" parent="."]
+position = Vector2(1120, 608)
+texture = ExtResource("3_odxgd")
 
 [node name="PlayerRigid" parent="." instance=ExtResource("1_4jr76")]
 position = Vector2(297, 216)
@@ -11,3 +19,9 @@ position = Vector2(297, 216)
 position = Vector2(1660, 252)
 angular_damp_mode = 1
 gamepad = 1
+
+[node name="Cocktail" parent="." instance=ExtResource("3_epkku")]
+position = Vector2(992, 448)
+
+[node name="Cocktail2" parent="." instance=ExtResource("3_epkku")]
+position = Vector2(1280, 768)

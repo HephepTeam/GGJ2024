@@ -15,22 +15,19 @@ var selected_pieces = []
 
 
 func _ready():
+	#start du compte à rebours
+	Globals.start_music()
 	Globals.game = self
 	player_nb = Globals.player_number
 	var colors = Globals.colors.duplicate()
-	#generation du level
-	#lecture du disque 
-	var dir = DirAccess.open(chunk_path)
-	#listage des chunks
-	pieces_scenes_path = Array(dir.get_files())
-	#selection des chunks
+	var temp_chunk_list = Globals.chunk_list.duplicate()
 	for i in range(level_length):
-		pieces_scenes_path.shuffle()
-		selected_pieces.append(pieces_scenes_path.front())
+		temp_chunk_list.shuffle()
+		selected_pieces.append(temp_chunk_list.pop_front())
 		
 	#instanciation des chunks
 	for pieces in selected_pieces:
-		var inst = load(chunk_path+pieces).instantiate()
+		var inst = pieces.instantiate()
 		inst.position = pos
 		add_child(inst)
 		pos.y = inst.exits[0].global_position.y
@@ -45,6 +42,12 @@ func _ready():
 	for pl in range(player_nb):
 		var inst = player_scene.instantiate()
 		inst.gamepad = pl
+		if (pl == 0):
+			if Globals.player_0_kb == true:
+				inst.keyboard = true
+		elif (pl == 1):
+			if Globals.player_1_kb == true:
+				inst.keyboard = true
 		
 		inst.position = start_pos[pl].position 
 		skin_nb_array.shuffle()
@@ -56,8 +59,6 @@ func _ready():
 		inst.rotation_degrees = -90
 		add_child(inst)
 		
-	#start du compte à rebours
-	Globals.start_music()
 
 func _on_run_ended(nb):
 	$CanvasLayer/Winner.go(nb)

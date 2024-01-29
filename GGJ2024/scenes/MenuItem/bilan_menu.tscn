@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dwt7fov1insem"]
+[gd_scene load_steps=9 format=3 uid="uid://dwt7fov1insem"]
 
 [ext_resource type="Script" path="res://scenes/MenuItem/bilan_menu.gd" id="1_3x6o1"]
 [ext_resource type="Texture2D" uid="uid://6vf75s5nhc1h" path="res://assets/graphics/menu/background_empty.png" id="2_8lidb"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dmssuys6jm02e" path="res://assets/graphics/avatar/ava2.png" id="5_wjixk"]
 [ext_resource type="Texture2D" uid="uid://bbpo67lyo1chw" path="res://assets/graphics/avatar/ava3.png" id="6_lyc2o"]
 [ext_resource type="Texture2D" uid="uid://bpkogu8bi87eu" path="res://assets/graphics/menu/quoi.png" id="7_retoc"]
+[ext_resource type="AudioStream" uid="uid://vlrhkiwu8ru2" path="res://assets/Sound/ggj_2024_game_over.mp3" id="8_yx4rw"]
 
 [node name="BilanMenu" type="Control"]
 layout_mode = 3
@@ -127,3 +128,7 @@ position = Vector2(1376, 480)
 rotation = 0.101229
 scale = Vector2(0.372911, 0.372911)
 texture = ExtResource("7_retoc")
+
+[node name="music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_yx4rw")
+volume_db = 3.0

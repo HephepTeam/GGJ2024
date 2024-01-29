@@ -9,6 +9,7 @@ const bulle_generator_scene = preload("res://scenes/chunks/items/bulle_generator
 const respawn_particule_scene = preload("res://scenes/player/respawn.tscn")
 
 @export var gamepad = 0
+var keyboard = false
 @export var footstep_scene: PackedScene = null
 @export var nb_dash = 5
 
@@ -47,15 +48,27 @@ func get_joystick_inputs():
 	var direction
 	if Globals.can_move:
 		if inversed_controls:
-			direction = Vector2(
+			if keyboard:
+				direction = Vector2(
+					-(Input.get_action_strength("move_right"+str(gamepad)) -Input.get_action_strength("move_left"+str(gamepad))),
+					-(Input.get_action_strength("move_down"+str(gamepad)) -Input.get_action_strength("move_up"+str(gamepad)))
+				)
+			else:
+				direction = Vector2(
 				-Input.get_joy_axis(gamepad,JOY_AXIS_LEFT_X),
 				-Input.get_joy_axis(gamepad,JOY_AXIS_LEFT_Y)
 			)
 		else:
-			direction = Vector2(
-				Input.get_joy_axis(gamepad,JOY_AXIS_LEFT_X),
-				Input.get_joy_axis(gamepad,JOY_AXIS_LEFT_Y)
-		)
+			if keyboard:
+				direction = Vector2(
+					(Input.get_action_strength("move_right"+str(gamepad))-Input.get_action_strength("move_left"+str(gamepad))),
+					(Input.get_action_strength("move_down"+str(gamepad)) -Input.get_action_strength("move_up"+str(gamepad)))
+				)
+			else:
+				direction = Vector2(
+					Input.get_joy_axis(gamepad,JOY_AXIS_LEFT_X),
+					Input.get_joy_axis(gamepad,JOY_AXIS_LEFT_Y)
+				)
 	else:
 		direction = Vector2.ZERO
 	return direction
@@ -79,8 +92,9 @@ func _physics_process(delta):
 			if get_dash_input():
 				dash(direction)
 				change_player_scale()
-			if abs(direction.length()) > 1.0:
-				direction = direction.normalized()
+			if abs(direction.length()) > 0.3:
+				if abs(direction.length()) > 1.0:
+					direction = direction.normalized()
 				state = states.MOVE
 		states.MOVE:
 			if animated_sprite.animation != "run":
